@@ -1,7 +1,5 @@
 $(document).ready(function(){
-	//disable autocomplete 
-	$('input').attr("autocomplete", "off");
-	$('input[type=email]').attr("autocomplete", "nope");
+	$('input').attr("autocomplete", "off");$('input[type=email]').attr("autocomplete", "nope");
 	
 	var all_errors = $("#all_errors").html();
 	var flashsuccess = $("#flashsuccess").html();
@@ -32,12 +30,16 @@ $(document).ready(function(){
 		    $("#alert-popup-main").fadeOut();
 		});
 	}
+	$("#alert-popup-head i").on('click', function() {
+		$("#form-popup-bg").fadeOut();
+	    $("#form-popup-main").fadeOut();
+	});
 
 	$('.fa-eye-slash').click(function(){
 		var current_type = $('#password').attr('type');
 		var changed_type = (current_type == "password") ? "text" : "password";
 		var type_class = (current_type == "password") ? "fa fa-eye" : "fa fa-eye-slash";
-		$('#password').attr('type',changed_type);
+		$('.passowrd-field #password').attr('type',changed_type);
 		$('.form-field-box.passowrd-field i').removeClass();
 		$('.form-field-box.passowrd-field i').addClass(type_class);
 	});
@@ -91,10 +93,6 @@ $(document).ready(function(){
 		var exist_user = 0;
 		if (loggedin_user) {
 			exist_user = 1;
-			//temporary code for milestone2
-			if (country_code == '') {
-			country_code='00';
-			}
 		}
 		
 		if (name && email && phone_number && country_code) {
@@ -103,7 +101,6 @@ $(document).ready(function(){
 			var url = SITEURL + '/ajax_register'+'?_token=' + csrftoken;
 			var amount = $(".selected_amount").data('ramount');
 			var order_id = $("#order_id").val();
-			var customer_id = $("#customer_id").val();
 			console.log(amount);
 			$.ajax({
 	        	url: url,
@@ -124,7 +121,6 @@ $(document).ready(function(){
 	        		amount:amount,
 	        		currency:currency,
 	        		order_id:order_id,
-	        		customer_id:customer_id,
 	        	}, 
 	        	success: function (result) {
 	        		// $(".signup_form .name").val('');
@@ -137,7 +133,6 @@ $(document).ready(function(){
 					console.log(result.order_id);
 					console.log(result.user_id);
 					$("#order_id").val(result.order_id);
-					$("#customer_id").val(result.customer_id);
 					$("#loggedin_user").val(result.user_id);
 					$("#make_payment").trigger("click");
 					
@@ -187,8 +182,6 @@ $(document).ready(function(){
 		var payment_type = $("#payment_type").val();
 		var user_id = $("#loggedin_user").val();
 		var order_id = $("#order_id").val();
-		var customer_id = $("#customer_id").val();
-		var subscription_type = $("#subscription_type").val();
 		
 		if (payment_type == 'razorpay') {
 			selected_amount = $('.selected_amount');
@@ -219,10 +212,18 @@ $(document).ready(function(){
 				dataImg = selected_amount.data('img');
 			}
 
-			callRazorPayScript(dataAmount, dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id, subscription_type, customer_id);
+			callRazorPayScript(dataAmount, dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id);
 
 			e.preventDefault();
-		}else{
+		}
+	});
+
+	$addCoinsBundle.on('click', function(e) {
+		var payment_type = $("#payment_type").val();
+
+		var user_id = $("#loggedin_user").val();
+		var order_id = $("#order_id").val();
+		if (payment_type == 'stripe') {
 			var dataCoinId = $(this).data('coinid'),
 			dataAmount = $(this).data('amount'),
 			dataQty = $(this).data('qty'),
@@ -231,46 +232,21 @@ $(document).ready(function(){
 			dataThemeColor = $(this).data('themecolor'),
 			dataImg = $(this).data('img');
 
-			callStripeCheckoutScript(dataCoinId, dataAmount, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id, subscription_type, customer_id);
+			callStripeCheckoutScript(dataCoinId, dataAmount, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id);
 
 			e.preventDefault();
 		}
 	});
-	$(document).on("DOMNodeRemoved",".stripe_checkout_app", close);
-	/*$addCoinsBundle.on('click', function(e) {
-		var payment_type = $("#payment_type").val();
-		var subscription_type = $("#subscription_type").val();
 
-		var user_id = $("#loggedin_user").val();
-		var order_id = $("#order_id").val();
-		var customer_id = $("#customer_id").val();
-		if (payment_type == 'stripe') {
-			
-		}
-	});*/
-
-	$('#get_profile_submit').on('click', function(event) 
-    {
-        event.preventDefault();
-
-        var $button = $(this);
-
-        var opts = $.extend({}, $button.data(), 
-        {
-            token: function(result) 
-            {
-                console.log(result);
-            }
-        });
-
-        StripeCheckout.open(opts);
-    });
+	var width = ($('.supporter-li').outerWidth()+30);
+	var lenght = $( ".supporter-ui li" ).size();
+	$( ".supporter-ui" ).css('width',lenght*width);
 });
 
 if (window.location.href.indexOf("donation") > -1) {
 	// payments();
 }
-/*
+
 function payments() {
 
 	 // Function to lazy load a script
@@ -282,7 +258,6 @@ function payments() {
 	var user_id = $("#loggedin_user").val();
 	var order_id = $("#order_id").val();
 	var $addCoinsBundle = $('#make_payment');
-	var subscription_type = $('#subscription_type');
 	if (payment_type == 'razorpay') {
 		selected_amount = $('.selected_amount');
 		var amount = selected_amount.data('amount');
@@ -312,7 +287,7 @@ function payments() {
 			dataThemeColor = selected_amount.data('themecolor'),
 			dataImg = selected_amount.data('img');
 		}
-		callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id, subscription_type);
+		callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id);
 	}else{
 		var dataCoinId = $(this).data('coinid'),
 			dataAmount = $(this).data('amount'),
@@ -325,9 +300,9 @@ function payments() {
 		callStripeCheckoutScript(dataCoinId, dataAmount, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id);
 	}
 
-}*/
+}
 
-function callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id, subscription_type, customer_id) {
+function callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id) {
 	var amount = dataAmount,
 	currency = dataCurrency,
 	qty = dataQty,
@@ -341,16 +316,13 @@ function callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDes
 	console.log('order_id'+order_id);
 	loadExternalScript('https://checkout.razorpay.com/v1/checkout.js').then(function() { 
 		var order_id = $("#order_id").val();
-		var customer_id = $("#customer_id").val();
 		var options = {
             key: 'rzp_test_lZAJDviG4Iirxp', // Replace with your RazorPay public key
             protocol: 'https',
             hostname: 'api.razorpay.com',
             amount: amount,
-            customer_id:customer_id,
             notes:{ 
             	order_id: order_id,
-            	customer_id: customer_id,
             	user_id: user_id
             },
             currency: currency,
@@ -360,7 +332,7 @@ function callRazorPayScript(dataAmount,dataCurrency, dataQty, dataBrand, dataDes
             theme: {
             	color: themeColor,
             },
-            callback_url: SITEURL+'/payment?order_id='+order_id+'&&user_id='+user_id+'&type=razorpay&subscription_type='+subscription_type+'&customer_id='+customer_id,
+            callback_url: SITEURL+'/payment?order_id='+order_id+'&&user_id='+user_id+'&type=razorpay',
   			redirect: true,
             /*handler: function(transaction, response) {
             	console.log(response);debugger;
@@ -456,68 +428,84 @@ function loadExternalScript(path) {
 
 	return result.promise();
 }
-function callStripeCheckoutScript(dataCoinId, dataAmount, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id, subscription_type, customer_id) {
-
+function callStripeCheckoutScript(dataCoinId, dataAmount, dataQty, dataBrand, dataDescription, dataThemeColor, dataImg, user_id, order_id) {
 	var coinId = dataCoinId,
-		amount = dataAmount,
-		qty = dataQty,
-		brand = dataBrand,
-		description = dataDescription,
-		themeColor = dataThemeColor,
-		subscription_type = subscription_type,
-		img = dataImg;
+  		amount = dataAmount,
+		  qty = dataQty,
+			brand = dataBrand,
+			description = dataDescription,
+			themeColor = dataThemeColor,
+			img = dataImg;
 
-	var amount = $(".selected_amount").data('ramount');
+	loadExternalScript('https://checkout.stripe.com/checkout.js').then(function() {
+    
+    var handler = StripeCheckout.configure({
+      key: 'pk_test_5B5loe91O0AsFmXh6zgniWwF000QFzbmuk',
+      locale: 'auto',
+      token: function(token) {
+        // Use the token to create the charge with a server-side script.
+        // You can access the token ID with `token.id`
+        console.log('Token Id', token.id);
+        console.log('Token Email', token.email);        
+        var csrftoken =$('meta[name="csrf-token"]').attr('content')
+        // var url = SITEURL + '/dopayment'+'?_token=' + csrftoken;
+        var url = SITEURL + '/payment'+'?order_id='+order_id+'&&user_id='+user_id+'&type=stripe';
+        var amount = $(".selected_amount").data('ramount');
+        
+        console.log(url);
+        $.ajax({
+        	url: url,
+        	type: 'post',
+        	dataType: 'json',
+        	data: {
+        		payment_id: token.id , 
+        		amount : amount,
+        		type:'stripe',
+        		order_id:order_id,
+        		user_id:user_id,
+        	}, 
+        	success: function (result) {
+        		console.log(result);
+        		// alert(result.msg);
 
-	var handler = StripeCheckout.configure({
-		key: 'pk_test_5B5loe91O0AsFmXh6zgniWwF000QFzbmuk',
-		locale: 'auto',
-		token: function(token) {
-			window.location.href = SITEURL+'/stripepayment?order_id='+order_id+'&&user_id='+user_id+'&type=stripe&subscription_type='+subscription_type+'&customer_id='+customer_id+'&token='+token.id+'&amount='+amount
-		},
-		opened: function() {
-			console.log('Opened Stripe modal');
-		},
-		closed: function() {
-			console.log('Closed Strip modal');
-		}
-	});
-
-	// Open Checkout with further options
-	handler.open({
-		name: brand,
-		image: img,
-		description: description,
-		amount: amount,
-		currency: 'USD'
-	});
-
-	// CLose checkout on page navigation
-	$(window).on('popstate', function() {
-		handler.close();
-	});
-   /* var price  = $(this).next().val();
-
-    var subscription_plan  = $(this).next().next().val();
-
-    event.preventDefault();
-
-    var $button = $(this);
-
-    var opts = $.extend({}, $button.data(), 
-    {
-        token: function(result) 
-        {
-        	console.log(result);
-        }
+                window.location.href = SITEURL+'/payment_success';
+            },
+            error: function(error) {
+            	console.log(error);
+            }
+        });
+      },
+      opened: function() {
+      	console.log('Opened Stripe modal');
+      },
+      closed: function() {
+      	console.log('Closed Strip modal');
+      }
     });
 
-    StripeCheckout.open(opts);     */    
+    // Open Checkout with further options
+    handler.open({
+      name: brand,
+      image: img,
+      description: description,
+      amount: amount,
+      currency: 'USD'
+    });
 
-}
-function close()
-{
-    $('.stripe_checkout_app').hide();
+    // CLose checkout on page navigation
+    $(window).on('popstate', function() {
+      handler.close();
+    });
+	});
+
+
+	console.log('Coin Id: ', coinId);
+  console.log('Amount: ', amount);
+	console.log('Quantity: ', qty);
+	console.log('Brand: ', brand);
+	console.log('Description: ', description);
+	console.log('ThemeColor: ', themeColor);
+	console.log('Image: ', img);
 }
 function loadExternalScript(path) {
 	var result = $.Deferred(),

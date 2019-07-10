@@ -12,7 +12,8 @@
 <h5><span>Pages: </span>
 <a href="{{ url('custompage') }}" class="{{ (Request::is('custompage') || Request::is('custompage/create') || Request::route()->getName()=='custompage.edit' ) ? 'active' : '' }}">CMS Pages</a> <span class="divider">|</span>
 <a href="{{ url('testimonial') }}" class="{{ (Request::is('testimonial') || Request::is('testimonial/create') || Request::route()->getName()=='testimonial.edit' ) ? 'active' : '' }}">Testimonial</a> <span class="divider">|</span>
-<a>Partners</a>
+<a href="{{ url('partner_images') }}" class="{{ (Request::is('partner_images') || Request::route()->getName()=='partner_images' ) ? 'active' : '' }}">Partners</a> <span class="divider">|</span>
+<a href="{{ url('programme_images') }}" class="{{ (Request::is('testimonial') || Request::is('testimonial/create') || Request::route()->getName()=='testimonial.edit' ) ? 'active' : '' }}">Programme</a>
 </h5>
 
 @if(session()->has('success'))

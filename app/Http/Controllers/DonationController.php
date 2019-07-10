@@ -8,7 +8,6 @@ use App\Models\Testimonial;
 use App\Models\ChartSetting;
 use App\PaymentTransactions;
 use App\Models\CustomPage;
-use App\Models\Subscriptions;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -18,9 +17,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Mail;
 use Razorpay\Api\Api;
 use Stripe\Error\Card;
-// use Cartalyst\Stripe\Stripe;
-use Stripe;
-// use Stripe\Customer;
+use Cartalyst\Stripe\Stripe;
 use Session;
 use Redirect; 
 use Auth;
@@ -28,13 +25,13 @@ use PDF;
 
 class DonationController extends Controller
 {
-    public function __construct(){
-        /* Stripe secret key */
+    // public function __construct(){
+    //     /* Stripe secret key */
 
-        $secret_key = env('STRIPE_SECRET');
+    //     $secret_key = env('STRIPE_SECRET');
 
-        $this->stripe = new Stripe($secret_key,'2017-12-14');
-    }
+    //     $this->stripe = new Stripe($secret_key,'2017-12-14');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +58,20 @@ class DonationController extends Controller
 
     public function payment(Request $request)
     {
-        $data =$request->all();
+        return $this->dopayment($request->all());
+    }
+
+    public function dopayment($data)
+    {
+        if ($data['type'] == 'razorpay') {
+            return $this->PayWithRazorpay($data);
+        }else{
+            return $this->PayWithStripe($data);
+        }
+    }
+
+    public function PayWithRazorpay($data)
+    {
         if (isset($data['error']) && $data['error']) {
             $paymenttransaction = PaymentTransactions::where('order_id',$data['order_id'])->first();
             $paymenttransaction->user_id = $data['user_id'];
@@ -96,25 +106,8 @@ class DonationController extends Controller
             $paymenttransaction->status = $response['status'];
             $paymenttransaction->description = $response['description'];
             $paymenttransaction->payment_id = $data['razorpay_payment_id'];
-            $paymenttransaction->payment_type = $data['subscription_type'];
 
             $paymenttransaction->save();
-
-            if($data['subscription_type'] == 'monthly'){
-                // $this->razorpay_subscription($data,$payment,$paymenttransaction);
-                $date = date('Y-m-d',strtotime($paymenttransaction->created_at));
-                $plan = $api->plan->create(
-                    array('period' => 'monthly', 'interval' => 1, 'item' => array('name' => 'Test Monthly 1 plan', 'description' => 'Description for the monthly 1 plan', 'amount' => $paymenttransaction->amount.'00', 'currency' => $paymenttransaction->currency))
-                );
-                
-                $subscription  = $api->subscription->create(
-                    array('plan_id' => $plan->id, 'customer_notify' => 1, 'total_count' => 10, 'start_at' => strtotime("$date +1 month"), 'addons' => array(array('item' => array('name' => 'Donation', 'amount' => $paymenttransaction->amount.'00', 'currency' => $paymenttransaction->currency))))
-                );
-                // dd($paymenttransaction->id);
-                $paymenttransaction = PaymentTransactions::find($paymenttransaction->id);
-                $paymenttransaction->subscription_id = $subscription->id;
-                $paymenttransaction->save();
-            }
 
             $arr = array('msg' => 'Payment successfully credited', 'status' => true);
 
@@ -133,47 +126,22 @@ class DonationController extends Controller
             }catch (\Exception $e) {
                 return redirect('payment_success');
             }
-        }    
+        }
     }
 
-    public function PayWithStripe(Request $request)
+    public function PayWithStripe($data)
     {
-        $data=$request->all();
         $order_id = $data['order_id'];
         $stripe = Stripe::make('sk_test_KOKv6djbziQhpPN7fbmbr6HY00CIwPx7rr');
-        $userdata = User::find($data['user_id']);
-        $flag=0;
-
-
         try {
-            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-            // $tokendata = \Stripe\Token::retrieve($data['token']); //to retrieve token
-            
-            $customer_id = '';
-            if($data['customer_id'] == ''){
-                $customer = \Stripe\Customer::create([
-                  "description" => "Customer for wecan donation",
-                  "card" => $data['token'] // obtained with Stripe.js
-                ]);
-
-                $userdata=User::find($data['user_id']);
-                $userdata->stripe_customer_id = $customer->id;
-                $userdata->save();
-
-                $customer_id=$customer->id;
-            }else{
-                $customer_id=$data['customer_id'];
-            }
-
-            $charge = \Stripe\Charge::create(array(
-                "amount" => $data['amount'].'00',
-                'expand' => array('balance_transaction'),   //to see stripe fee
-                "currency" => "usd",
-                "customer" => $customer_id,
-                "description" => "Add in wallet",
-                "metadata" => ["order_id" => $order_id],
-            ));
-           
+            $charge = $stripe->charges()->create([
+                'card' => $data['payment_id'],
+                'currency' => 'USD',
+                'amount' => $data['amount'],
+                'expand' => array('balance_transaction'),
+                'metadata' => ["order_id" => $order_id],
+                'description' => 'Add in wallet',
+            ]);
             $paymentsuccess = false;
             if($charge['status'] == 'succeeded') {
                 // PaymentTransactions::create($data);
@@ -186,55 +154,35 @@ class DonationController extends Controller
                 $paymenttransaction->status = $charge['status'];
                 $paymenttransaction->description = $charge['description'];
                 $paymenttransaction->payment_id = $charge['id'];
-                $paymenttransaction->payment_type = $data['subscription_type'];
+
                 $paymenttransaction->save();
 
-                $date = date('Y-m-d',strtotime($paymenttransaction->created_at));
-                if($data['subscription_type'] == 'monthly'){
-                    
-                    $plan = \Stripe\Plan::create(array(
-                        "amount" => $paymenttransaction->amount.'00',
-                        "interval" => "month",
-                        "product" => array(
-                            "name" => "Donation"
-                        ),
-                        "currency" => $paymenttransaction->currency,
-                    ));
-// dd(strtotime("$date +1 month"));
-                    $subscription = \Stripe\Subscription::create([
-                      "customer" => $customer_id,
-                       'trial_end' => strtotime("$date +1 month"),
-                        'ends_at' => null,
-                      "items" => [["plan" => $plan->id]],
-                    ]);
-                   
-                    $paymenttransaction = PaymentTransactions::find($paymenttransaction->id);
-                    $paymenttransaction->subscription_id = $subscription->id;
-                    $paymenttransaction->save();
-                }
+                $paymentsuccess = true;
+            }
 
-                $flag = 1;
+            //Send Email notification after successfull payment
+            if( $paymentsuccess == true ){ //echo 1;
+                $this->SendEmailNotification($charge['currency'], $charge['id'], $data['user_id']);
                 $arr = array('msg' => 'Payment successfully credited', 'status' => true);
+            }else{
+                $arr = array('msg' => 'Money not add in wallet!!', 'status' => true);
             }
-        } catch (\Exception $e) {
-            \Session::flash('flash_pay_error', $e->getMessage());
-            return redirect('donation');
-        }
+            return Response()->json($arr);
 
-        if ($flag) {
-            try {
-                $this->SendEmailNotification($response['currency'], $data['razorpay_payment_id'], $data['user_id']);
-                return redirect('payment_success');
-            }catch (\Exception $e) {
-                return redirect('payment_success');
-            }
+        } catch (Exception $e) {
+            $arr = array('msg' => $e->getMessage(), 'status' => false);
+            return Response()->json($arr);
         }
-
     }
 
     public function payment_success()
     {
         return view('Donation.thankyou');
+    }
+
+    public function payment_failed()
+    {
+        return view('Donation.payment_failed');
     }
 
     /**
@@ -263,12 +211,38 @@ class DonationController extends Controller
     public function SendEmailNotification($currency, $id, $user_id)
     {
         $filename = $this->generatePDF($currency,$id);
+        $file_path = url('/') . '/public/uploads/PDF/'.$filename;
         $user = User::find($user_id);
         if($filename){
             $user->file_name = $filename;
         }
         $toEmail = $user->email;
         Mail::to($toEmail)->send(new SuccessMail($user));
+
+        $data = [
+            'phone' => '919909524492',
+            // 'body' => $file_path,
+            'body' => 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+            "filename" => $filename,
+        ];
+        $json = json_encode($data); // Encode data to JSON
+        $token = env('WHATSAPP_TOKEN');
+        // URL for request POST /message
+        $url = env('WHATSAPP_API_FILE').$token;
+
+        // Make a POST request
+        $options = stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/json',
+                'content' => $json
+            ]
+        ]);
+        // Send a request
+        $result = file_get_contents($url, false, $options);
+
+        //print_r($result);
+
+
         return;
     }
 

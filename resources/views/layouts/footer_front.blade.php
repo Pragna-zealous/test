@@ -48,18 +48,21 @@
         <div class="footer-top">
             <div class="container">
                 <div class="footer-left">
-                    <img src="images/we-can-footer.png">
-                    <p>C9, 1st C Main Road, MCHS Colony, Sector 6, HSR Layout, Bengaluru, Karnataka - 560102 India</p>
+                    <img src="<?php echo url('images/we-can-footer.png'); ?>">
+                    <span>An Initiative by The/Nudge Foundation</span>
+                    <!-- <p>C9, 1st C Main Road, MCHS Colony, Sector 6, HSR Layout, Bengaluru, Karnataka - 560102 India</p> -->
+                    <p>Rigel, Aswath Nagar Service Road, ORR, Dodda Nekkundi Extension, Marathahalli, Bengaluru, Karnataka 560037</p>
                 </div>
                 <div class="footer-right">
                     <div class="footer-social">
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.linkedin.com/company/we-can-foundation"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/WeCan-391213528254342/"><i class="fa fa-facebook"></i></a>
                     </div>
                     <div class="clr"></div>
                     <ul class="footer-nav">
                         <li><a href="{{ url('custompage_load/faq') }}">Faq</a></li>
+                        <li><a href="">audited financials</a></li>
                         <li><a href="{{ url('custompage_load/privacy-policy') }}">Privacy policy</a></li>
                         <li><a href="{{ url('custompage_load/terms-&-conditions') }}">Terms & Conditions</a></li>
                         <li><a href="{{ url('custompage_load/cancellation-policy') }}">Cancellation Policy</a></li>
@@ -114,14 +117,14 @@
     </footer>
 <!-- Login Popup -->
 <div class="form-popup-main" id="form-popup-main" style="display: none;" >
-    <div class="form-popup-head">Sign In <i class="fa fa-times-circle"></i></div>
+    <div id="alert-popup-head" class="form-popup-head">Sign In <i class="fa fa-times-circle"></i></div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="form-popup-box">
             <div class="form-field-box">
                 <input id="email" type="email" class="input-field form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email address" autofocus>
 
-                @error('email')
+                <!-- @error('email')
                 <script type="text/javascript">
                     document.getElementById("form-popup-main").showModal();
 
@@ -129,12 +132,12 @@
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
+                @enderror -->
             </div>
             <div class="form-field-box passowrd-field">
                 <input id="password" type="password" class="input-field form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
-
-                @error('password')
+                <i class="fa fa-eye-slash"></i>
+                <!-- @error('password')
                 <script type="text/javascript">
                     document.getElementById("form-popup-main").showModal();
 
@@ -142,8 +145,7 @@
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror
-                <i class="fa fa-eye-slash"></i>
+                @enderror -->
             </div>
             <div class="forget-link">
                 @if (Route::has('password.request'))

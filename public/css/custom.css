@@ -95,3 +95,30 @@
     color: black;
   }
   .display-none{display: none;}
+
+  .mass_communication .col-form-label.text-md-right
+  {
+    padding: 0px 10px;
+  }
+  .mass_communication .all_user
+  {
+    margin-left: 15px; width: 320px;
+  }
+  .mass_communication .specified_user
+  {
+    margin-left: 15px; width: 320px;
+  }
+  .mass_communication .specified_user .form-control
+  {
+    width:250px; float: left;
+  }
+  .mass_communication .specified_user .add_specified_user
+  {
+    margin: 0px 0px 0px 15px; float: left; 
+  }
+  .mass_communication .specified_users{margin-top: 15px; padding-left:15px;}
+  .mass_communication .specified_users input
+  {
+    margin: 0px 5px; display: inline-block;
+  }
+  

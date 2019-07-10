@@ -6,6 +6,7 @@ body {font-family: 'HelveticaNeueLTStd-Lt'; color: #333333; }
   transition: all 0.3s ease-in-out;}
 .pull-left {float: left !important;}
 .pull-rigth {float: right !important;}
+:focus {outline: none !important;}
 input:focus {outline: none;}
 .full-width {float: left; width: 100% !important; margin: 0px; position: relative;}
 ::-webkit-input-placeholder {color: #999999;}
@@ -86,10 +87,10 @@ a {
 
 .container {width: 1176px; margin: 0 auto; padding:0 15px; max-width: 100%;}
 header .container {padding: 27px 15px;}
-.home-header {position: absolute; left: 0; top: 0; z-index: 9; width: 100%; height: 100px; background: url('../public/images/top-gradient.png') left top; max-width: 100%;}
+.home-header {position: absolute; left: 0; top: 0; z-index: 9; width: 100%; height: 100px; background: url('images/top-gradient.png') left top; max-width: 100%;}
 .header-container {width: 1176px; margin: 0 auto; padding: 27px 15px; max-width: 100%;}
 .donation-logo {float: left; width: auto; margin: 0px; padding:0px;}
-.donation-banner {float: left; width: 100%; margin: 0px; padding: 0px; background: url('../public/images/donation-banner.png') center top; background-size: cover; height: 768px; position: relative;}
+.donation-banner {float: left; width: 100%; margin: 0px; padding: 0px; background: url('images/donation-banner.png') center top; background-size: cover; height: 768px; position: relative;}
 
 .donation-banner:before {content: ''; position: absolute; left:0; bottom: 0; width: 100%; height: 230px; /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
   background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
@@ -98,8 +99,8 @@ header .container {padding: 27px 15px;}
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */}
 .banner-container {width: 1176px; padding: 0 15px; position: relative; margin: 0 auto; max-width: 100%;}
 
-.banner-form {float: right; width: 420px; height: 534px; margin: 156px 0 0 0; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0px 0px 20px rgba(0,0,0,0.15);}
-.banner-form-title {float: left; width:100%; margin: 0px; text-align: center; color: #333333; padding: 0px; font-weight: normal; font-family: 'HelveticaNeueLT-Thin'; font-size:22px;}
+.banner-form {float: right; width: 420px; height: auto; margin: 156px 0 0 0; background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0px 0px 20px rgba(0,0,0,0.15);}
+.banner-form-title {float: left; width:100%; margin: 0px; text-align: center; color: #333333; padding: 0px; font-weight: normal; font-family: 'HelveticaNeueLTStd-Th'; font-size:22px;}
 .banner-form-title b {font-family: 'HelveticaNeueLTCom-Bd';}
 .price-switch {float: right; width: auto; margin: 6px 0 0 0;}
 .price-switch .switch {position: relative;display: inline-block; width: 46px; height: 26px;}
@@ -119,8 +120,12 @@ header .container {padding: 27px 15px;}
 .top-support-box ul {list-style: none; margin: 0px; padding: 0px; width: 3500px;}
 .top-support-box ul li {float: left; width: 250px;  box-shadow: 0px 0px 20px rgba(0,0,0,0.15); border-radius: 10px;  padding: 13px 15px; background: #fff; margin: 0 15px;}
 .support-text-box {display: table;  width: 100%; vertical-align: middle;}
-.support-text-avtar {display: table-cell; width: 47px; height: 47px; vertical-align: middle;}
+.support-text-avtar {display: table-cell; width: 47px; height: 47px; vertical-align: middle; border-radius: 25px; background: #777777; color: #fff; text-transform: uppercase; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; letter-spacing: 1px;}
 .support-text-avtar img {width: 100%; height: 100%; border-radius: 25px;}
+.avtar-pink {background: #ab006d; color: #fff;}
+.avtar-green{background: #4ba46b; color: #fff;}
+.avtar-blue{background: #5686e0; color: #fff;}
+
 .support-text {display: table-cell; vertical-align: middle; padding: 0 0 0 15px;}
 .support-text span {display: block; font-size: 16px; color: #333333; font-family: 'HelveticaNeueLTStd-Lt';}
 .support-text b {display: block; font-weight: normal; font-family: 'HelveticaNeueLTStd-Bd'; font-size: 16px; color: #03affb; padding: 5px 0 0 0;}
@@ -140,12 +145,12 @@ header .container {padding: 27px 15px;}
 .donation-check .checkbox label {margin-top: 20px;}
 .donation-check .checkbox input[type=checkbox] {display: none; }
 .donation-check .checkbox label {display: inline-block;cursor: pointer;position: relative;padding: 4px 0 0 40px;margin-right: 0;font-size: 16px;color:#333333 !important;   min-height:26px; margin-top: 0px; }
-.donation-check .checkbox label:before {content: "";display: inline-block;position: absolute;left: 0;top:0;background:url('../public/images/check-box.png') no-repeat !important; height: 26px;width:26px; top: 0px;}
+.donation-check .checkbox label:before {content: "";display: inline-block;position: absolute;left: 0;top:0;background:url('images/check-box.png') no-repeat !important; height: 26px;width:26px; top: 0px;}
 .donation-check .checkbox input[type=checkbox]:checked + label:before {content: "";background-position: left -30px !important;  height: 26px;	width:26px;}
 .donation-btn {float: left; width:100%; text-align:center; border-radius: 10px; background:#03affb; font-family: 'HelveticaNeueLTStd-Bd'; font-size: 18px; letter-spacing: 1px; text-transform:uppercase; color:#fff; line-height: 50px; border:none; cursor: pointer;}
 .donation-btn i {margin: 0 10px 0 0; cursor: pointer;}
 .donation-btn:hover {background: #eeeeee; color: #333333;}
-.donation-sub-banner {float: left; width: 100%; margin: 0px; padding: 0px; background: url('../public/images/sub-banner.png') center top; background-size: cover; height: 768px; position: relative;}
+.donation-sub-banner {float: left; width: 100%; margin: 0px; padding: 0px; background: url('images/sub-banner.png') center top; background-size: cover; height: 768px; position: relative;}
 .donation-sub-banner-tag {
 position: absolute;
 right: 0;
@@ -168,7 +173,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 .day-box {float: left; width: 100%;margin: 0px; padding: 0px;}
 .day-box-title {float: left; width: 100%; margin: 60px 0 30px 0; color: #fff;  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
 -webkit-text-stroke-width: 1px;
--webkit-text-stroke-color: black;  background: url('../public/images/text-bg.png') center top no-repeat; font-size: 46px; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; line-height: 90px;}
+-webkit-text-stroke-color: black;  background: url('images/text-bg.png') center top no-repeat; font-size: 46px; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; line-height: 90px;}
 .day-box h3 {display: block;margin: 0px; text-align: center; padding: 0px; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 30px; font-weight: normal;}
 .day-box h2 {display: block;margin: 0px; padding: 0px; font-weight: normal; text-align: center; font-family: 'HelveticaNeueLT-Thin'; font-size: 48px;}
 
@@ -177,8 +182,8 @@ we support section
 ============================*/
 .support-section {float: left; width:100%; padding: 75px 0 0 0;}
 
-.support-section h2 img {display: inline-block; height: 80px; vertical-align: top; margin-top: 30px;}
-.testimonial-section {float: left; width: 100%;  padding: 48px 0 32px 0; border-radius: 15px; margin: 0;}
+.support-section h2 img {display: inline-block; height: 65px; vertical-align: top; margin-top: 30px;}
+.testimonial-section {float: left; width: 100%;  padding: 65px 0; border-radius: 15px; margin: 0;}
 .testimonial-section h2 {float: left; width: 100%; font-size: 36px; font-family: 'HelveticaNeueLTStd-Lt'; font-weight: normal; margin: 0 0 23px 0;}
 .testimonial-slide {float: left; width: 100%; margin: 0px; padding: 0 15px;}
 .testimonial-box {width: 33.33%; padding: 15px; float: left;}
@@ -188,8 +193,9 @@ we support section
 .testimonial-avtar img {display:inline-block; vertical-align: top; border-radius: 10px 10px 0 0; -webkit-border-radius: 10px 10px 0 0; max-width: 100%;}
 .testimonial-detail {float: left; width: 100%; padding: 0 15px;}
 .testimonial-detail h3 {display: block;  font-family: 'HelveticaNeueLTStd-Lt'; font-size: 26px; margin: 0px; padding: 0 0 3px 0; font-weight: normal;}
-.testimonial-detail span {display: block; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 14px; margin: 2px 0 30px 0;}
-.testimonial-detail p {display: block; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 16px; margin: 0px; padding:0px;}
+.testimonial-detail span {display: block; font-family: 'HelveticaNeueLTStd-Lt'; position: relative; font-size: 14px; padding: 2px 0 30px 0;}
+.testimonial-detail span:before {position: absolute; left: 0; right: 0; bottom: 14px; margin: auto; width: 20px; content: ''; height: 1px; background: #333333;}
+.testimonial-detail p {display: block; font-family: 'HelveticaNeueLT-Thin'; font-size: 14px; margin: 0px; padding:0 0 25px 0;}
 
 /*===============================
 we can section 
@@ -197,40 +203,52 @@ we can section
 .wecan-section {float: left; width:100%; margin: 0px; padding: 50px 0 70px 0; text-align: center; background: #f8f8f8;}
 .wecan-section img {display: inline-block; vertical-align: top; height: 70px;}
 .wecan-section h2 {float: left; width: 100%; margin: 0; color: #fff;  -webkit-text-fill-color: white;
-  -webkit-text-stroke-width: 1px;  -webkit-text-stroke-color: black;  background: url('../public/images/wecan-bg.png') center top no-repeat; font-size: 46px; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; line-height: 90px;}
+  -webkit-text-stroke-width: 1px;  -webkit-text-stroke-color: black;  background: url('images/wecan-bg.png') center top no-repeat; font-size: 46px; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; line-height: 90px;}
 .wecan-section h4 {float: left; width: 100%; text-align: center; font-size: 36px; margin: -10px 0 0 0; padding: 0px; font-family:'HelveticaNeueLTStd-Lt'; font-weight: normal;}
   
 /*===============================
 Graph section
 ========================*/
-.graph-section {float: left; width: 100%; padding: 40px 0;}
-.graph-section h2 {float: left ; width:100%; font-size: 48px; text-align: center; font-family: 'HelveticaNeueLT-Thin'; font-weight: normal; margin: 60px 0;}
+.graph-section {float: left; width: 100%; padding: 40px 0 80px 0;}
+.graph-section .container {width: 936px;}
+.graph-section h2 {margin: 35px 0 95px 0;}
 .graph-section h2 b {font-family:'HelveticaNeueLTStd-Bd';}
 .graph-box {display: table; width: 100%; margin: 0 auto; padding: 0px; max-width: 810px;}
 .graph-box-img {display: inline-block; vertical-align: middle; width: 50%;}
 .graph-box-img img {max-width: 100%;}
 .graph-box-img.right {text-align: right; padding: 0 30px 0 0;}
+.graph-left {width: 450px;float: left;}
+.graph-right {width: 275px;float: right;}
+.graph-info {float: left; width: 100%; position: relative; padding: 0 0 0 38px; margin:20px 0;}
+.graph-info:before {content: ''; position: absolute; left: 0; top: 0; bottom: 0; margin: auto; width: 6px; height: 95%; background: #c4c4c4;}
+.graph-info span {display: block;  font-size: 40px; font-family: 'HelveticaNeueLTStd-Bd';  margin: 0px; padding: 0 0 2px 0;}
+.graph-info p {display: block; font-size: 24px; font-family: 'HelveticaNeueLTStd-Th'; padding-bottom: 7px;}
+.graph-info:first-child:before {background: #03affb;}
+.graph-info:last-child:before {background: #e5e5e5;}
+.graph-info:first-child span {color: #03affb;}
+
 
 /*===============================
 need love section
 ========================*/
 .need-love-section {float: left; width:100%; background: #f8f8f8; padding: 70px 0 0 0;}
-.need-love-section .container {max-width: 990px;}
+.need-love-section .container {width: 990px;}
 .need-love-from {margin-top: 70px;}
 .need-love-section h2 img {display: inline-block; vertical-align: top; margin: 0 0 10px 0; height: 76px;}
 .need-love-section h2 b {font-family:'HelveticaNeueLTStd-Bd';}
-.need-love-msg {float: left; width: 100%; margin: 45px 0; padding: 0px;}
+.need-love-msg {float: left; width: 100%; margin: 60px 0; padding: 0px;}
 .need-love-row {margin: 0 -10px;}
-.need-love-col {float: left; width: 33.33%; padding: 0 10px; text-align: center;}
+.need-love-col {float: left; width: 33.33%; padding: 0 10px; text-align: center; margin-bottom: 20px;}
 .need-love-box {float: left; width: 100%; background: #ffffff; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0,0,0,0.07); padding: 28px 15px 35px 15px;}
 .need-love-box h3 {font-family:'HelveticaNeueLTStd-Bd'; float: left; width: 100%; margin: 0px; padding: 0px; font-size: 18px; font-weight: normal;}
 .need-love-box span {float: left; width: 100%; margin: 3px 0 15px 0; font-weight: 14px; font-family: 'HelveticaNeueLTStd-Lt';}
 .need-love-box p {float: left; width: 100%; margin: 0; font-size: 14px; font-family: 'HelveticaNeueLTStd-Lt'; padding: 0px;}
-.need-love-form-box {display: inline-block; vertical-align: top; width: 100%; height: 515px; background: url('../public/images/postcard.png') center top no-repeat;}
+.need-love-form-box {display: inline-block; vertical-align: top; width: 100%; height: 515px; background: url('images/postcard.png') center top no-repeat;}
 .need-love-form-col {float: left; width: 50%; margin: 0px; padding: 0 54px;}
 .need-love-form-box h3{display: block; font-size: 34px; color: #648988; font-family:'HelveticaNeueLTStd-Bd'; margin: 45px 0 0 0; padding: 0px;}
 .need-love-form-box h4{display: block; font-size: 22px; color: #648988; font-weight: normal; margin: 6px 0 35px 0; padding: 0px;}
 .need-love-form-box textarea {color: #658a89; font-size: 16px; padding: 14px 16px; font-family: 'HelveticaNeueLTStd-Lt'; background: transparent; border: 2px solid #6f8f8e; resize: none; width: 100%; height: 321px; border-radius: 10px; -webkit-border-radius: 10px;} 
+.need-love-form-left textarea {display: none;}
 .need-love-form-box textarea:focus,
 .need-love-form-box input:focus {outline: none;}
 .need-love-form-left {padding-top: 153px;}
@@ -244,7 +262,7 @@ need love section
 .need-form-check .checkbox input[type=checkbox] {display: none; }
 .need-form-check .checkbox {display:inline-block; width: auto; padding:0px; }
 .need-form-check .checkbox label {display: inline-block;cursor: pointer;position: relative;padding: 0 0 0 25px;margin-right: 0;font-size: 12px;color:#517675 !important;   min-height:16px; margin-top: 0px; }
-.need-form-check .checkbox label:before {content: "";display: inline-block;position: absolute;left: 0;top:0;background:url('../public/images/check-box-new.png') no-repeat !important; height: 16px;width:16px; top: 0px;}
+.need-form-check .checkbox label:before {content: "";display: inline-block;position: absolute;left: 0;top:0;background:url('images/check-box-new.png') no-repeat !important; height: 16px;width:16px; top: 0px;}
 .need-form-check .checkbox input[type=checkbox]:checked + label:before {content: "";background-position: left -22px !important;  height: 16px;	width:16px;}
 
 .need-love-form-box input::-webkit-input-placeholder,
@@ -289,16 +307,17 @@ header main
 profile section
 ============================*/
 
-.profile-section {float: left; width: 100%; background:url('../public/images/gray-pattent.png') #ffffff; padding: 50px 0;}
-.profile-box {width: 950px; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0,0,0,0.07); padding: 50px 97px;}
+.profile-section {float: left; width: 100%; background:url('images/gray-pattent.png') #ffffff; padding: 50px 0;}
+.profile-box {width: 950px; max-width: 100%; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0,0,0,0.07); padding: 50px 97px;}
 .profile-pic {float: left; width: 100%; margin: 0px; padding: 0px;margin: 0; text-align: center;}
-.profile-pic span {display: inline-block; height: 200px; width: 200px; border-radius: 100px; -webkit-border-radius: 100px; position: relative; vertical-align: top; background: url('../public/images/default-user.jpg') center; background-size: cover; overflow: hidden;}
-.profile-pic span b {position: absolute; width: 100%; left: 0; bottom: 0; height: 62px; background: rgba(0,0,0,0.5); background-image: url('../public/images/upload-icon.png'); background-repeat: no-repeat; background-position: center;}
+.profile-pic span {display: inline-block; height: 200px; width: 200px; border-radius: 100px; -webkit-border-radius: 100px; position: relative; vertical-align: top; background: url('images/default-user.jpg') center; background-size: cover; overflow: hidden;}
+.profile-pic span b {position: absolute; width: 100%; left: 0; bottom: 0; height: 62px; background: rgba(0,0,0,0.5); background-image: url('images/upload-icon.png'); background-repeat: no-repeat; background-position: center;}
 .profile-pic span b input {position: absolute;left: 0;top: 0;width: 100%;height: 100%;opacity: 0;}
 .profile-edit {float: left; width: 100%; margin: 20px 0 0 0; padding: 0px;}
 .profile-row {margin: 0 -15px; clear: left;}
 .profile-col {float: left; width: 50%; margin: 30px 0 0 0; padding: 0 15px; }
 .input-field {float: left; width: 100%; height: 50px; border: 0px; background: #f8f8f8; -webkit-box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.08); -moz-box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.08); box-shadow: inset 0px 2px 5px 0px rgba(0,0,0,0.08); font-size: 16px; font-weight: normal; color: #333333;  font-family: 'HelveticaNeueLTStd-Lt'; padding: 15px 20px; border-radius: 10px; -webkit-border-radius: 10px;}
+textarea.input-field {height: auto; resize: none;}
 .defult-btn {display: inline-block; cursor: pointer;  -webkit-transition: all 0.3s ease-in-out;  -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; vertical-align: top; min-width: 166px; background: #03affb; line-height: 50px; border: none; padding: 0 15px; font-family:'HelveticaNeueLTStd-Bd'; text-align: center; text-transform: uppercase; font-size: 16px; color: #fff; border-radius: 10px; -webkit-border-radius: 10px; cursor: pointer; letter-spacing: 0.5px;}
 .defult-btn:hover {background: #cecece;}
 .subscribe-box {float: left; width: 100%; padding: 5px 70px 0 0; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 15px; position: relative;}
@@ -316,10 +335,11 @@ footer section
 ============================*/
 .footer-main {float: left; width:100%; background: #03affb}
 .footer-top {float:left; width: 100%; padding: 45px 0 30px 0; border-bottom: 1px solid #4fc7fc;}
+.footer-top .container {position: relative;}
 .footer-left {float: left; width: auto; margin: 0px; padding: 0px; width:  359px;}
 .footer-left h2 {float: left; width:100%; margin: 0px; padding: 0px; font-size: 38px; font-family:'HelveticaNeueLTStd-Bd'; color: #ffffff;}
+.footer-left span {float: left; width: 100%; margin:0; font-family: 'HelveticaNeueLTStd-Th'; padding: 0px; font-size: 14px; color: #ffffff;  letter-spacing: 1px;}
 .footer-left p {float: left; width: 100%; margin: 18px 0; font-family: 'HelveticaNeueLTStd-Th'; padding: 0px; font-size: 13px; color: #ffffff;  letter-spacing: 0.5px;}
-
 .footer-right {float: right; width: auto; margin: 0px; padding: 0px;}
 .footer-social {float: right; width: auto;}
 .footer-social a {color: #fff; font-size: 22px; margin: 0 0 0 32px; display: inline-block; vertical-align: middle;}
@@ -348,7 +368,7 @@ footer section
 /*========= sign in popup 
 ================*/
 .form-popup-bg {position: fixed; left: 0; top: 0; bottom: 0;margin: 0px; right: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7);}
-.form-popup-main {position: absolute; z-index: 99; left: 0; right: 0; width: 423px; max-width: 95%; margin: auto; top: 50%; transform: translateY(-50%); -webkit-transform: translateY(-50%); background: #fff; border-radius: 10px; overflow: hidden;}
+.form-popup-main {position: fixed; z-index: 99; left: 0; right: 0; width: 423px; max-width: 95%; margin: auto; top: 50%; transform: translateY(-50%); -webkit-transform: translateY(-50%); background: #fff; border-radius: 10px; overflow: hidden;}
 .form-popup-head {float: left; width: 100%; text-transform: uppercase; color:#ffffff; font-family: 'HelveticaNeueLTStd-Bd'; letter-spacing: 0.5px; line-height: 60px; font-size: 20px; padding: 0 30px; background: #03affb;}
 .form-popup-head i {float: right; margin: 20px 0 0 0; cursor: pointer;}
 .form-popup-box {float: left; width: 100%; margin: 0px; padding: 30px; background: #ffffff;}
@@ -370,7 +390,7 @@ footer section
 /*===================== 
 inner banner 
 =======================*/
-.inner-banner {float: left; width: 100%; margin: 0px; padding: 0px; height: 375px; background: url('../public/images/inner-banner.jpg') center no-repeat; background-size: cover;}
+.inner-banner {float: left; width: 100%; margin: 0px; padding: 0px; height: 375px; background: url('images/inner-banner.jpg') center no-repeat; background-size: cover;}
 
 /*===============
 vision section 
@@ -385,7 +405,7 @@ vision section
 who we
 ================*/
 .who-we-section {padding: 60px 0;}
-.who-we-section .container {max-width:985px;}
+.who-we-section .container {width:985px;}
 .who-we-section .sub-title {margin-bottom: 40px;}
 .who-we-section .sub-title i {color: #03affb;}
 .who-we-section p {display: block; margin: 40px 0; line-height:1.5; padding: 0px; font-size: 24px; text-align: center; font-family: 'HelveticaNeueLTStd-Lt'; float: left; width: 100%;}
@@ -400,13 +420,13 @@ do Good
 Nudge section
 ================*/
 .nudge-section .full-width {padding: 120px 0; text-align: center;}
-.nudge-section .container {max-width:985px;}
+.nudge-section .container {width:985px;}
 .nudge-section .sub-title i {color: #ffcf06}
 .nudge-section p {display: block; margin: 75px 0; line-height:1.5; padding: 0px; font-size: 24px; text-align: center; font-family: 'HelveticaNeueLTStd-Lt'; float: left; width: 100%;}
 .nudge-section span {display: block; letter-spacing: 1px; font-size: 14px; text-transform: uppercase; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; margin: 0 0 26px 0;}
 .nudge-section a {display: inline-block; vertical-align: top; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 15px; background: #ffcf06; line-height: 31px; padding: 0 20px;border-radius: 20px; color: #333333; text-decoration: none;}
 .nudge-section a:hover {background: #03affb; color: #ffffff;}
-.we-can-bottom .container .container{max-width: 985px}
+.we-can-bottom .container .container{width: 985px}
 .we-can-bottom  .full-width { border-top: 1px solid #cccccc;}
 .we-can-bottom p {display: block; margin: 80px 0; line-height:1.5; padding: 0px; font-size: 24px; text-align: center; font-family: 'HelveticaNeueLTStd-Lt'; float: left; width: 100%;}
 
@@ -424,12 +444,12 @@ pages
 home banner 
 =========================================*/
 .home-banner {float: left; width: 100%; margin: 0px; padding: 0px;}
-.home-banner .slick-slide { background: url('../public/images/banner-main.jpg') center top; background-size: cover; height: 768px; position: relative;}
-.home-banner .slick-slide:before {content: ''; opacity: 0.4; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('../public/images/pattent.png');}
+.home-banner .slick-slide { background: url('images/banner-main.jpg') center top; background-size: cover; height: 768px; position: relative;}
+.home-banner .slick-slide:before {content: ''; opacity: 0.4; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('images/pattent.png');}
 
 .home-banner-container {width: 1176px; position: absolute; margin: auto; left: 0; right: 0;  bottom:27.5%;  max-width: 100%; padding: 0 15px;}
 .home-banner-text {float: left; max-width: 675px; margin: 0px; padding: 0 0 0 15px;}
-.home-banner-text h2 {float: left; width:100%; margin: 0px ;padding: 0px; position: relative;}
+.home-banner-text h2 {float: left; width:100%; margin: 0px ;padding: 0px; position: relative; font-size: 48px; font-family: 'HelveticaNeueLTStd-Th'; font-weight: normal;}
 .home-banner-text h2:before {position: absolute; left: -15px; top: 0; content: ' “ '}
 .donation-button {display: inline-block; margin-top: 40px; vertical-align: top; background: #03affb; color: #ffffff; width: 254px; line-height: 54px; text-align: center; font-size: 22px; font-family: 'HelveticaNeueLTStd-Bd'; text-decoration: none; text-transform: uppercase;}
 .donation-button i {margin-right: 5px;}
@@ -447,18 +467,18 @@ indians live
 .indians-section {float: left; width: 100%; text-align: center; background: #f8f8f8; padding: 65px 0;}
 .indians-section .container {width: 1010px;}
 .indians-section h2 {margin: 0px; padding: 0px; font-family: 'HelveticaNeueLTStd-Th'; font-size: 42px; font-weight: normal;}
-.indians-section span {background: url('../public/images/indian1-3.png') center top no-repeat; background-size: 100%; display: inline-block; color: #fff; width: 145px; line-height: 52px; text-align: center;}
+.indians-section span {background: url('images/indian1-3.png') center top no-repeat; background-size: 100%; display: inline-block; color: #fff; width: 145px; line-height: 52px; text-align: center;}
 
 /*==============
 choose section
 ===========*/
-.choose-section {float: left; width: 100%; padding: 70px 0 85px 0; margin-bottom: 36px; }
-.choose-section h2 {margin-bottom: 65px;}
+.choose-section {float: left; width: 100%; padding: 70px 0 80px 0; margin-bottom: 30px; }
+.choose-section h2 {margin-bottom: 65px; padding: 0 15px;}
 .choose-section-col {float: left; width: 50%; padding: 0 15px; padding-bottom: 28px; position: relative; margin-top: 15px;}
 .choose-section-box {float: left; width: 100%; position: relative;}
 .choose-section-box a {position: absolute; left: 0; right: 0; bottom: -29px; margin: auto; width: 438px; padding: 14px 20px; max-width: 90%; text-align: center; background: #03affb; color: #ffffff; text-decoration: none; border-radius: 5px; font-family: 'HelveticaNeueLTStd-Lt'; font-size: 26px;}
 .choose-section-box a:hover { background: #eeeeee; color: #333333;}
-.choose-section-sub {float: left; width: 100%;  text-align: center; position: relative; height: 515px; background: url('../public/images/blank-img.png') center no-repeat; background-size: cover;}
+.choose-section-sub {float: left; width: 100%;  text-align: center; position: relative; height: 515px; background: url('images/blank-img.png') center no-repeat; background-size: cover;}
 .choose-section-sub:after {position: absolute; content: ''; left: 0; top: 0; bottom: 0; right: 0;
 background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1%, rgba(255,255,255,0) 52%, rgba(0,0,0,0.5) 100%);
 background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,0) 52%,rgba(0,0,0,0.5) 100%);
@@ -470,16 +490,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 /*-------------
 happy people 
 --------------*/
-.happy-people {float: left; position: relative; width: 100%; margin: 0px; padding: 0px; background: url('../public/images/img-new.png') center no-repeat; background-size: cover; text-align: center;  background-attachment: fixed;}
-.happy-people:before {content: ''; opacity: 0.6; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('../public/images/black-pattent.png');}
+.happy-people {float: left; position: relative; width: 100%; margin: 0px; padding: 0px; background: url('images/img-new.png') center no-repeat; background-size: cover; text-align: center;  background-attachment: fixed;}
+.happy-people:before {content: ''; opacity: 0.6; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: url('images/black-pattent.png');}
 .happy-people h2 {display: inline-block; position: relative; font-family: 'HelveticaNeueLTStd-Th'; font-weight: normal; color: #ffffff; font-size: 48px; padding: 115px 15px; width: 1010px; max-width: 100%;}
 
 /*-------------
 we can setting
 --------------*/
-.we-can-setting {float: left; width: 100%; padding: 80px 0 122px 0;}
+.we-can-setting {float: left; width: 100%; padding: 75px 0 120px 0;}
 .we-can-setting h2 {margin-bottom: 50px;}
-.we-can-box {float: left; width: 100%; padding: 20px; margin: 30px 0 0 0;   background: url('../public/images/wecan-img1.png') center top no-repeat; background-size: cover; position: relative;}
+.we-can-box {float: left; width: 100%; padding: 20px; margin: 30px 0 0 0;   background: url('images/wecan-img1.png') center top no-repeat; background-size: cover; position: relative;}
 .we-can-box:before {position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); content: '';}
 .we-can-sub{float: left; width: 100%;  height: 380px; position: relative; border: 1px solid #ffffff;  background: rgba(0,0,0,0.25); z-index: 1;}
 .we-can-box-text {position: absolute; bottom: 0; width: 100%; padding: 20px; text-align: center; }
@@ -491,24 +511,25 @@ partner section
 .partner-logo-main {float: left; width: 100%; padding: 80px 0;}
 .partner-logo-main h2 {margin-bottom: 50px;}
 .partner-logo-box {float: left; width: 100%; margin: 0; padding: 0px; list-style: none;}
-.partner-logo-box li {float: left; width: 16.66%; padding: 0 15px; margin: 30px 0 0 0;}
-.logo-box-main {float: left; width: 100%;  padding: 20px; background: #ffffff; border-radius: 10px; -webkit-border-radius: 10px; box-shadow: 0px 5px 14px rgba(0,0,0,0.07); -webkit-box-shadow: 0px 5px 14px rgba(0,0,0,0.07);}
+.partner-logo-box li {float: left; width: 16.66%; padding: 0 15px; margin: 0;}
+.logo-box-main {float: left; width: 100%; margin: 15px 0; padding: 20px; background: #ffffff; border-radius: 10px; -webkit-border-radius: 10px; box-shadow: 0px 5px 14px rgba(0,0,0,0.07); -webkit-box-shadow: 0px 5px 14px rgba(0,0,0,0.07);}
 .logo-box-main span {float: left; width: 100%; height: 62px; position: relative;}
 .logo-box-main span img {position: absolute; left: 0; top: 0; bottom: 0; right: 0; margin: auto; max-width: 100%; max-height: 100%;}
+.partner-logo-box .slick-dots {display: none !important;}
 /*-------------
 regularly section
 --------------*/
 .regularly-main {float: left; width: 100%; background: #f8f8f8; padding: 80px 0;}
-.regularly-main h2 {margin-bottom: 50px;}
+.regularly-main h2 {margin-bottom: 60px;}
 
 /*-------------
 need help
 --------------*/
-.need-help {float: left; width: 100%; background: url('../public/images/need-help-img.png') center bottom no-repeat; background-size: 100%; padding: 80px 0 525px;}
+.need-help {float: left; width: 100%; background: url('images/need-help-img.png') center bottom no-repeat; background-size: 100%; padding: 80px 0 525px;}
 .need-help h2 {margin-bottom: 50px;}
 .need-help .section-col4 {margin-top: 30px;}
 .help-box {float: left; width: 100%; border-radius: 10px; -webkit-border-radius: 10px; overflow: hidden;}
-.help-img {float: left; width: 100%; height: 262px; background: url('../public/images/blank-img.png') center no-repeat; background-size: cover;}
+.help-img {float: left; width: 100%; height: 262px; background: url('images/blank-img.png') center no-repeat; background-size: cover;}
 .help-text {float: left; width: 100%; padding: 15px; color: #ffffff; background: #03affb; text-align: center;}
 .help-text p {display: block; margin: 0px; padding: 0px; color: #ffffff; font-family: 'HelveticaNeueLTStd-Th'; font-size: 18px;}
 .help-text a {display: block; margin: 14px 0 0 0; padding: 0px; line-height: 38px; font-family: 'HelveticaNeueLTStd-Bd'; color: #ffffff; text-decoration: none; font-weight: normal; font-size: 18px; text-transform: uppercase; background: #0395d6; border-radius: 5px; -webkit-border-radius: 5px;}
@@ -528,10 +549,10 @@ need help
 /*-------------
 map section
 --------------*/
-.map-main {float: left; width: 100%; margin: 0; padding: 40px 0 20px 0; background: url('../public/images/map-bg.png') center top no-repeat; background-size: cover; background-attachment: fixed; text-align: center; position: relative;}
+.map-main {float: left; width: 100%; margin: 0; padding: 40px 0 20px 0; background: url('images/map-bg.png') center top no-repeat; background-size: cover; background-attachment: fixed; text-align: center; position: relative;}
 .map-main .sub-titlenew {color: #ffffff;}
 .india-map-main {float: left; width: 100%; margin: 40px 0 0 0; padding: 0px; position: relative;}
-.india-map-box {display: inline-block; vertical-align: top; margin-left: 45px; width: 641px; position: relative; height: 733px; background: url('../public/images/indian-map.png') center top no-repeat;}
+.india-map-box {display: inline-block; vertical-align: top; margin-left: 45px; width: 641px; position: relative; height: 733px; background: url('images/indian-map.png') center top no-repeat;}
 .india-map-info {position: absolute; text-align: left; left: 0; top: 0; padding:5px; width: 167px; background: #ffffff; border-radius: 5px; -webkit-border-radius: 5px;}
 .india-map-info span {display: block; font-size: 12px; padding-bottom: 5px; letter-spacing: 0.6px;}
 .india-map-info i {width: 44px; display: inline-block; vertical-align: middle; text-align: center;}
@@ -549,21 +570,23 @@ map section
 .hydrabad-st-icon {position: absolute; left: 54px; top: 20px; width: 32px; height: 38px;}
 .banglore-map {position: absolute; left: 125px; bottom:80px; width: 130px; height: 95px;}
 .banglore-st-icon {position: absolute; left: 61px; top: 14px; width: 32px; height: 38px;}
-.people-popup {position: absolute; display: none; text-align: left; left: -105px; bottom: 30px; width: 216px; padding: 10px; background: #ffffff; border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0px 2px 15px rgba(0,0,0,0.4); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.4);}
+.people-popup {position: absolute; display: none; text-align: left; left: -105px; bottom: 24px; width: 216px; padding: 10px; background: #ffffff; border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0px 2px 15px rgba(0,0,0,0.4); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.4);}
 .people-popup:before { content:''; left: 101px; bottom: -7px; position: absolute;
   width: 0; height: 0; border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: 7px solid #ffffff;}
-  .people-icon.active .people-popup {display: block;}
-  .people-icon.active .point-icon {display: none;}
-  .people-icon.active .active-icon {display: block;}
+  .people-icon:hover .people-popup {display: block;}
+  .people-icon:hover .point-icon {display: none;}
+  .people-icon:hover .active-icon {display: block;}
 .people-popup img {width: 100%; border-radius: 5px; -webkit-border-radius: 5px;}
 .people-popup h4 {display: block; font-weight: normal; font-size: 15px; padding: 2px 0 5px 0; margin: 0px;}
 .people-popup p {font-size: 12px; margin: 0px; padding: 0px; letter-spacing: 0.3px;}
 
-.video-popup {position: absolute; text-align: left; left: -83px;  bottom: 45px; width: 185px; height: 111px; padding: 10px; background: #ffffff; border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0px 2px 15px rgba(0,0,0,0.4); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.4);}
-.video-popup:before { content:''; left: 92px; bottom: -7px; position: absolute; width: 0; height: 0; border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: 7px solid #ffffff;}
-.video-img {background: url('../public/images/blank-img.png') center no-repeat; background-size: cover; float: left; width: 100%; height: 100%;}
+.video-popup {position: absolute; display: none; text-align: left; left: -76px;  bottom: 43px; width: 185px; height: 111px; padding: 10px; background: #ffffff; border-radius: 5px; -webkit-border-radius: 5px; box-shadow: 0px 2px 15px rgba(0,0,0,0.4); -webkit-box-shadow: 0px 2px 15px rgba(0,0,0,0.4);}
+.video-popup:before { content:''; left: 0; right: 0; margin: auto; bottom: -7px; position: absolute; width: 0; height: 0; border-left: 7px solid transparent;border-right: 7px solid transparent;border-top: 7px solid #ffffff;}
+.video-img {background: url('images/blank-img.png') center no-repeat; background-size: cover; float: left; width: 100%; height: 100%;}
 .video-img img {position: absolute; left: 0; top: 0; bottom: 0; right: 0; margin: auto; cursor: pointer;}
-.state-icon img {}
+.state-box:hover .video-popup {display: block;}
+.state-box img {cursor: pointer;}
+
 
 /*--------------
 certification section
@@ -571,7 +594,7 @@ certification section
 .certification-box {display: table; vertical-align: middle; width: 100%;}
 .certification-col {display: table-cell; vertical-align: middle;}
 .certification-img {width: 40%; position: relative;}
-.certification-img:before {content: ''; position: absolute; opacity: 0.2; left: 0; top: 0; width: 100%; height: 100%; background: url('../public/images/pattent.png');}
+.certification-img:before {content: ''; position: absolute; opacity: 0.2; left: 0; top: 0; width: 100%; height: 100%; background: url('images/pattent.png');}
 .certification-img img {margin-top: 40px;}
 .certification-text {padding: 0 20px 0 98px;}
 .certification-text p {float: left; width: 100%; line-height: 1.3; font-size: 26px; margin: 35px 0; font-family: 'HelveticaNeueLTStd-Th';}
@@ -583,16 +606,16 @@ here now
 .here-now-main {float: left; width: 100%;  padding: 90px 0; text-align: center;}
 .here-now-main p {float: left; width: 100%; font-family: 'HelveticaNeueLTStd-Th'; font-size: 30px; line-height: 1.7;}
 .here-now-main p span {color: #fff; line-height: 47px;display: inline-block; }
-.here-now-main p span.million {background: url('../public/images/million-bg.png') center no-repeat;  width: 145px}
-.here-now-main p span.month {background: url('../public/images/month-bg.png') center no-repeat;  width: 135px}
-.here-now-main p span.poor {background: url('../public/images/poor-bg.png') center no-repeat;  width: 290px}
+.here-now-main p span.million {background: url('images/million-bg.png') center no-repeat;  width: 145px}
+.here-now-main p span.month {background: url('images/month-bg.png') center no-repeat;  width: 135px}
+.here-now-main p span.poor {background: url('images/poor-bg.png') center no-repeat;  width: 290px}
 .here-now-main h2 {float: left; width: 100%; font-size: 36px; font-weight: normal; margin: 50px 0 0 0; }
 .here-now-main h2 b { font-family: 'HelveticaNeueLTStd-Bd'; font-size: 48px; display: block;}
 
 /*----------------
 audit secton 
 -----------------*/
-.audit-main {float: left; width: 100%; padding: 80px 0; text-align: center; background: #f8f8f8;}
+.audit-main {float: left; width: 100%; padding: 100px 0; text-align: center; background: #f8f8f8;}
 .audit-main h3 {display: block; font-size: 26px; font-family: 'HelveticaNeueLTStd-Th'; font-weight: normal;}
 .audit-main h2 {display: block; font-size: 42px; font-weight: normal; padding: 70px 0 0 0; font-family: 'HelveticaNeueLTStd-Th';}
 
@@ -604,9 +627,9 @@ audit secton
 .donation-bannerTag i:before {position: absolute; content: ''; bottom: 0; left: 0; width: 22px; height: 4px; border-radius: 2px; -webkit-border-radius: 2px; background: #ffffff;}
 
 /*-- donaation sub banner --*/
-.certification-section  {float: left; width: 100%; position: relative;}
-.certification-section:before {position: absolute; height: 100%; opacity: 0.2; content: ''; left: 0; top: 0; width: 100%; background: url('../public/images/gray-pattent-b.png');}
-.certification-section img {width: 100%;}
+.certification-section  {float: left; width: 100%; position: relative; background: url('images/donation-sub-banner.jpg') center top; height: 622px; background-size: cover;}
+.certification-section:before {position: absolute; height: 100%; opacity: 0.2; content: ''; left: 0; top: 0; width: 100%; background: url('images/gray-pattent-b.png');}
+.certification-section img {width: 100%; display: none;}
 .certification-section h3 {position: absolute; right: 68px; width: 640px; bottom: 220px; font-size: 36px; font-weight: normal; color: #000;}
 .certification-section h3 span {display: block; font-size: 20px; padding: 3px 0 0 12px; letter-spacing: 0.7px;}
 
@@ -640,7 +663,7 @@ audit secton
 .circle-box {display: inline-block; vertical-align: top; width: 150px; height: 150px; position: relative; border: 2px solid #fff; border-radius: 50%; -webkit-border-radius: 50%; line-height: 150px;  font-family: 'HelveticaNeueLTStd-Bd'; color: #ffffff; font-size: 36px;}
 .circle-main label {display: block; font-size: 24px; color: #ffffff; padding: 25px 0 0 0; font-weight: normal; font-family: 'HelveticaNeueLTStd-Th'; letter-spacing: 1px;}
 
-.thankYou-main {float:left; width:100%; min-height: 592px; background:url('../public/images/thankYou-banner.png') center top no-repeat; background-size: cover;}
+.thankYou-main {float:left; width:100%; min-height: 592px; background:url('images/thankYou-banner.png') center top no-repeat; background-size: cover;}
 .thanks-box {float: left; position: relative; letter-spacing: 0.5px; font-family: 'HelveticaNeueLTStd-Th'; background: #ffffff; border-radius: 20px; padding: 45px; margin: 113px 0; width: 486px; max-width: 100%;}
 .thanks-title {float: left; width: 100%; padding: 0 110px 0 0; font-size: 16px;  font-family: 'HelveticaNeueLTStd-Th';}
 .thanks-title b {display: block; font-weight: normal; font-size: 24px;padding: 3px 0 0 0; font-family: 'HelveticaNeueLTStd-Lt';}
@@ -671,7 +694,7 @@ gurukul program
 .gurukul-main {float: left; width: 100%; margin: 0px;  padding: 95px 0 135px 0; background: #f8f8f8;}
 .gurukul-main img {display: inline-block; vertical-align: top; max-width: 100%;}
 .gurukul-main h2 {float: left; width: 100%; text-align: center; letter-spacing: 2px; font-family: 'HelveticaNeueLTStd-Bd'; margin-bottom: 95px; font-size: 36px; text-transform: uppercase; font-weight: normal; color: #03affb;}
-.gurukul-program-section {float: left; width: 100%; position: relative; height: 855px; padding: 0 15px;}
+.gurukul-program-section {margin: 0 auto; width: 1349px; position: relative; height: 855px; padding: 0 15px;}
 .poor-box {position: absolute; left: 0; top: 120px; width: 175px;}
 .poor-box-icon {float: left; width: 42px; margin: 0px; padding: 0px;}
 .poor-box-text {float: left; width: 133px; font-family: 'HelveticaNeueLTStd-Bd'; font-size: 14px; padding: 12px 0 0 20px;}
@@ -700,9 +723,9 @@ gurukul program
 .gurukul-income {position: absolute; left: 0; top: 622px; width: 140px;}
 .gurukul-income-img {float: left; width: auto;}
 .gurukul-income-text{float: left; width: auto; font-family: 'HelveticaNeueLTStd-Bd'; font-size: 14px; padding: 26px 0 0 3px;}
-.gurukul-career { left: 236px; top: 728px;}
-.gurukul-job {left: 535px; top: 608px;}
-.gurukul-family {right: 273px; top: 728px;}
+.gurukul-career { left: 236px; top: 732px;}
+.gurukul-job {left: 535px; top: 612px;}
+.gurukul-family {right: 273px; top: 732px;}
 
 .share-btn {position: absolute; right: 45px; top: 45px; width: 93px;}
 .share-btn span {display: block; line-height: 32px; color: #03affb; cursor: pointer; font-family: 'HelveticaNeueLTStd-Bd'; text-align: center; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; background: #fff;  box-shadow: 0px 1px 4px rgba(0,0,0,0.3); border-radius: 5px;}
@@ -717,3 +740,6 @@ gurukul program
 .thanks-col {float: left; width: 33.33%; padding: 19px 15px; font-size: 18px; text-align: center;}
 .thanks-col:first-child {text-align: left;}
 .thanks-col:last-child {text-align: right;}
+.thanks-col a {color: #333333; text-decoration: none;}
+.thanks-col a:hover {text-decoration: underline;}
+.menu-icon {display: none;}

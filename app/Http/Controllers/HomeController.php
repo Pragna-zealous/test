@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\ChartSetting;
 use App\Models\CustomPage;
+use App\Models\Partner;
+use App\Models\Programme;
 use App\PaymentTransactions;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,7 +36,9 @@ class HomeController extends Controller
     public function index()
     {
         // return view('welcome');
-        return view('home_front');
+        $partnerimages = Partner::orderBy('image_order', 'asc')->get();
+        $programmeimages = Programme::orderBy('image_order', 'asc')->get();
+        return view('home_front', compact('partnerimages','programmeimages'));
     }
 
     public function profile(){
@@ -138,13 +142,6 @@ class HomeController extends Controller
         return view('payment.history',compact('TransactionData'));
     }
 
-    public function subscriptions()
-    {
-        $subscriptionsdata = PaymentTransactions::with('user')->where('user_id',Auth::user()->id)->where('subscription_id','!=','')->orderBy('created_at','DESC')->get();
-        // dd($subscriptions);
-        return view('payment.subscriptions',compact('subscriptionsdata'));
-    }
-
     public function privacypolicy()
     {
         return view('privacy-policy');
@@ -210,8 +207,7 @@ class HomeController extends Controller
     {
         // dd($request->all());
         $pay_user_id = '';
-        $customer_id = '';
-        $requestdata = $data = $request->all();
+        $data = $request->all();
         if (!$data['user']) {
             $validator = Validator::make($request->all(), [
                 'name' => ['required', 'string', 'max:255'],
@@ -292,7 +288,6 @@ class HomeController extends Controller
             }
         }else{
             $pay_user_id = $data['user'];
-
         }
 
         if ($data['order_id']) {
@@ -335,8 +330,6 @@ class HomeController extends Controller
             }else{
                 $order_id = $payment_order->order_id;
             }
-
-            
             /*if ($data['payment_type'] == 'razorpay') {
                 //get API Configuration 
                 $api = new Api('rzp_test_lZAJDviG4Iirxp', 'DKYxyzOceZwqpePHwWVTEaTS');
@@ -355,24 +348,7 @@ class HomeController extends Controller
             }*/
         }
 
-        $userdata = User::find($pay_user_id);
-            
-        if ($requestdata['payment_type'] == 'razorpay') {
-            $customer_id=$userdata->razorpay_customer_id;
-            if ($userdata->razorpay_customer_id == '') {
-                $api = new Api('rzp_test_lZAJDviG4Iirxp', 'DKYxyzOceZwqpePHwWVTEaTS');
-                $customer = $api->customer->create(array('name' => $userdata->name, 'email' => $userdata->email, 'contact' => $userdata->country_code.$userdata->phone_number));
-                $customer_id = $customer->id;
-                $userdata->razorpay_customer_id = $customer->id;
-                $userdata->save();
-            }
-        }else{
-            $customer_id=$userdata->stripe_customer_id;
-            if ($userdata->stripe_customer_id == '') {
-
-            }
-        }
-        return Response::json(array('success' => true,'order_id'=>$order_id,'user_id'=>$pay_user_id,'customer_id'=>$customer_id), 200);
+        return Response::json(array('success' => true,'order_id'=>$order_id,'user_id'=>$pay_user_id), 200);
     }
 
     public function about_us(){
@@ -384,8 +360,6 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'phone_number' => 'required|numeric|digits_between:10,100',
-            'country_code' => 'required|numeric|digits_between:1,100',
         ]);
 
         if ($validator->fails()) {
@@ -403,17 +377,17 @@ class HomeController extends Controller
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'country_code' => $data['country_code'],
-                'phone_number' => $data['phone_number'],
+                // 'country_code' => $data['country_code'],
+                // 'phone_number' => $data['phone_number'],
                 'whatsapp_notification' => $notification,
                 'email_notification' => $notification,
                 'password' => Hash::make($password),
-                'signup_from' => $data['signup_from'],
+                'signup_from' => 'footer',
             ]);
             $pay_user_id = $user->id;
 
             $orderdata = null;
-            return redirect('donation');
         }
+        return redirect('/');
     }
 }

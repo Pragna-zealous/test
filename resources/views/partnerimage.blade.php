@@ -58,14 +58,14 @@
             <?php $user = auth()->user(); ?>
             {!! Form::open(array('url' => '/store_partner_images', 'class' => "form-horizontal",'files' => true, 'enctype' => 'multipart/form-data')) !!}
             @csrf
-            <input type="hidden" value="{{ count($images) }}" name="total_count" id="total_count">
+            <input type="hidden" value="{{ count($images) }}" name="total_count" id="partner_total_count">
             <!-- <div class="form-group row">
                 {!! Form::label('partner_images', 'Partner Images', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
                 <div class="col-md-6">
                     <input type="file" name="partner_images" multiple>
                 </div>
             </div> -->
-            <input type="file" id="files" name="files[]" multiple/ value="{{ $images }}">
+            <input type="file" id="partner_files" name="files[]" multiple/ value="{{ $images }}">
             <div class="field droppable" align="left">
                 @if(!empty($images))
                     @php 
@@ -80,7 +80,7 @@
                                 <img class="imageThumb" src="{{ url('public/uploads').'/Partners/'.$name }}" title="" />
                                 <input type="hidden" name="stored_image_id_{{$i}}" class="stored_image_id" value="{{ $id }}">
                                 <input type="hidden" name="url" class="url" value="{{url('ajaxRequestPartner')}}">
-                                <br/><span class="remove notify-badge">X</span>
+                                <br/><span class="partner_image remove notify-badge">X</span>
                             </span>
                         @php
                             $i++;

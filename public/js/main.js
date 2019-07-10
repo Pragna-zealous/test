@@ -35,14 +35,5 @@ $(document).ready(function(){
         $('.profile-row.pass-fields').addClass('error');
       }
   }, 1000);
-
-  $('.fa-eye-slash').click(function(){
-    var current_type = $('#password').attr('type');
-    var changed_type = (current_type == "password") ? "text" : "password";
-    var type_class = (current_type == "password") ? "fa fa-eye" : "fa fa-eye-slash";
-    $('#password').attr('type',changed_type);
-    $('.form-field-box.passowrd-field i').removeClass();
-    $('.form-field-box.passowrd-field i').addClass(type_class);
-  });
   
 });

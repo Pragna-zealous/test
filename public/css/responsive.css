@@ -1,3 +1,36 @@
+
+@media only screen and (max-width: 1024px) {
+    .choose-section-box a {font-size: 24px;}
+    .footer-left {width: 270px;}
+    .gurukul-program-section { width: 550px; height: 1810px; max-width: 100%;}
+    .gurukul-line img {display: none;}
+    .gurukul-line {background: url('../images/line-img-rs.png') center top no-repeat; width: 31px; height: 1803px; left: 0; top: 0; right: 0; margin: auto;}
+    .g-icon {margin-bottom: 10px;}
+    .gurukul-family {right: 124px;top: 1750px;}
+    .gurukul-job {top: 1514px; left: 14px;}
+    .gurukul-img-box {margin-bottom: 15px;}
+    .gurukul-job .gurukul-img-box:after,
+    .gurukul-yoga .gurukul-img-box:after{width: 0;content: '';position: absolute;left: inherit;bottom: 0; right: -8px;margin: auto;height: 0;border-top: 8px solid transparent;border-bottom: 8px solid transparent;border-left: 8px solid white;top: 0;}
+    .gurukul-graduate .gurukul-img-box:after,
+    .english-skil .gurukul-img-box:after,
+    .driving-skil .gurukul-img-box:after{width: 0;content: '';position: absolute;left: inherit;bottom: 0;left: -8px;margin: auto;height: 0;border-top: 8px solid transparent;border-bottom: 8px solid transparent;border-right: 8px solid white;top: 0;}
+    .gurukul-img-box:before {display: none;}
+    .gurukul-career { left: inherit;  top: 1345px;right: 110px;}
+    .exit-gurkul {left: 120px;top: 1140px;}
+    .gurukul-graduate {right: 14px;top: 910px;}
+    .gurukul-yoga {right: inherit;top: 712px; left: 14px;}
+    .english-skil {top: 510px; right: 14px;}
+    .g-map {left: 122px;top: 360px;}
+    .driving-skil { right: 14px; left: inherit; top: 120px;}
+    .enter-box-icon {padding: 0px; margin-bottom: 12px; text-align: center;}
+    .enter-box {left: 93px; top: -30px;}
+    .poor-box {left: 96px;top: 162px;}
+    .skills-box {right: 84px;top: 764px;}
+    .gurukul-income {left: 95px;top: 1356px;}
+    .certification-section {height: 550px;}
+    .certification-section h3 {right: 40px;}
+    
+}
 @media only screen and (max-width: 768px) {
     .nav-menu li {margin-right: 25px;}
     .indians-section h2 {font-size: 30px;}
@@ -5,8 +38,136 @@
     .sub-titlenew {font-size: 36px;}
     .choose-section-box a {font-size: 18px;}
     .choose-section-sub {height: 350px;}
-    .we-can-box-text {padding: 20px;}
+    .we-can-box-text {padding: 20px 10px;}
     .we-can-sub {height: 280px;}
-    .happy-people h2 {height: 36px;}
-    .section-col4 {width: 50%;}
+    .happy-people h2 {font-size: 36px;}
+    .section-col4 {width: 50%;}    
+    .footer-social {position: absolute; right: 15px; top: 0;}
+    .footer-b {display: block; float: left;}
+    .footer-b-col {display: block; padding: 0 15px 0 0; float: left; width: 50%;}
+    .footer-b-col:first-child {width: 100%; padding: 0px; margin-bottom: 20px;}
+    .footer-b-col:last-child {padding: 0 0 0 15px;}
+    .footer-right {width: 100%;}    
+    .footer-nav {width: 100%; text-align: center; margin: 10px 0 10px 0;}
+    .footer-nav li {float: none; display: inline-block; vertical-align: top; margin: 0 0 5px 0}
+    .footer-nav li a {padding: 0 10px;}
+    .vision-box h2 {font-size: 36px; padding-bottom: 20px;}
+    .vision-box p {font-size: 22px;}
+    .profile-box {padding: 50px 20px;}
+    .profile-col .defult-btn {min-width: 155px;}
+    .certification-section h3 {width: 425px; max-width: 100%; bottom: 130px; right: 20px; font-size: 24px;}
+    .certification-section h3 span {font-size: 16px;}
+    .graph-left {width: 100%;}
+    .graph-right {width: 100%;}
+    .graph-info{width: 33.33%;}
+    .graph-info p {font-size: 20px;}
+    .need-love-form-box {background: url('../images/postcard-bg.png') repeat; height: auto;}
+    .need-love-form-col {width: 100%;}
+    .need-love-form-col textarea{display: none;}
+    .need-love-form-left textarea {display: block; border: none; border-bottom: 2px solid #6f8f8e; border-radius: 0px; padding: 0px; height: 60px;}
+    .need-love-form-left {padding-top: 0px;}
+    .need-love-form-left .btn-box {margin-bottom: 40px;}
+    .tax-col {padding: 30px; min-height: 70px;}
+    .audit-main h2 {font-size: 36px;}
+    .thanks-col {font-size: 17px;}
+    .certification-section {height: 350px;}
+    .need-help .section-row{margin: 0 auto;max-width: 588px;}
+}
+
+@media only screen and (max-width: 767px) {
+    .nav-menu {display: none;position: absolute;left: 0;top: 87px;width: 100%;background: rgba(0,0,0,0.8);}
+    .menu-icon {background: #fff;  padding: 5px 10px;    border-radius: 2px; -webkit-border-radius: 2px;  color: #03affb;  margin: 4px 15px 0; display: inline-block; float: right;}
+    .india-map-main {display: none;}
+    .nav-menu li {width: 100%; margin: 10px 0; text-align: center;}
+    .nav-menu {padding-bottom: 10px;}
+    .vision-box {width: 100%;}
+    .who-we-section .sub-title {margin-bottom: 20px;}
+    .who-we-section p {margin: 20px 0;}
+    .vision-box {padding: 20px 0;}
+    .vision-section .full-width {padding: 20px 0;}
+    .profile-col {width: 100%;}
+    .profile-col .defult-btn {min-width: 140px;}
+    .banner-form {max-width: 100%;}
+    .donation-banner {height: auto;}
+    .donation-bannerTag {position: relative; float: left; width: 95%; margin: 30px 0 30px 5%; padding: 0 15px; left: 0; bottom: 0;}
+    .donation-bannerTag span {font-size: 26px;}
+    .certification-section h3 {width: 96%; margin: 0 2%; right: 0; bottom: 20px;font-size: 20px; color: #fff;}
+    .certification-section:before {background: #000; opacity: 0.6;}
+    .here-now-main {padding: 40px 0;}
+    .here-now-main h2 {font-size: 30px;}
+    .here-now-main h2 b {padding-top: 20px; font-size: 36px;}
+    .gurukul-main {padding: 45px 0 65px 0;}
+    .footer-left {width: 100%; text-align: center;}
+    .footer-social {position: relative; right: 0; width: 100%; text-align: center; margin-top: 10px;}
+    .footer-msg-new a {text-align: center;}
+    .footer-bottom {text-align: center;}
+    .thanks-col {width: 100%; text-align: center !important; padding: 10px 0;}
+    .thanks-bottom { padding: 10px 0;}
+    .certification-section {height: 250px;}
+    .footer-nav {margin: 10px 0 30px 0;}
+    
+}
+
+@media only screen and (max-width: 479px) {
+    .choose-section-col {width: 100%; margin: 15px 0;}
+    .choose-section-box a {padding: 14px;}
+    .home-banner .slick-slide {height: 500px;}
+    .indians-section {padding: 40px 0 30px 0;}
+    .sub-titlenew {font-size: 28px;}
+    .choose-section {padding: 40px 0 0px 0;}
+    .choose-section h2 {margin-bottom: 20px;}
+    .we-can-setting,
+    .regularly-main {padding: 40px 0;}
+    .we-can-setting h2 {margin-bottom: 10px;}
+    .partner-logo-main {padding: 30px 0;}
+    .partner-logo-main .slick-list {padding-bottom: 15px;}
+    .section-col4{width: 100%;}
+    .need-help {padding: 40px 0 125px 0;}
+    .need-help h2 {margin-bottom: 10px;}
+    .home-banner-text h2 {font-size: 28px;}
+    .footer-b-col.footer-msg-new {width: 100%; padding: 5px 0;}
+    .footer-social a {margin-left: 15px;}
+    .audit-main {padding: 40px 0;}
+    .graph-info {width: 100%;}
+    .section-col3,
+    .need-love-col {width: 100%;}
+    .progress-main {padding: 35px 0;}
+    .progress-main .section-col3 {padding: 25px 0;}
+    .audit-main h2 {font-size: 28px;}
+    .need-love-section {padding-top: 40px;}
+    .need-love-msg {margin: 30px 0;}
+    .tax-section {margin: 40px 0;}
+    .tax-col {width: 100%; margin: 0px;}
+    .tax-col:last-child {border: none;}
+    .tax-section .sub-titlenew {margin-bottom: 30px;}
+    .need-love-form-col {padding: 0 25px;}
+    .need-love-from {margin-top: 40px;}
+    .need-love-form-box h3 {font-size: 27px;}
+    .need-love-form-box h4 {font-size: 20px;}
+    .gurukul-program-section {width: 375px;}
+    .gurukul-img-box img {width: 140px; height: 106px;}
+    .enter-box {left: 10px;}
+    .driving-skil {right: 0px; top: 141px;}
+    .driving-img-main {width: 140px;}
+    .poor-box {left: 2px;}
+    .g-map {left: 38px;}
+    .english-skil {right: 0; top: 531px;}
+    .skills-box {right: -3px;}
+    .gurukul-yoga {left: 0; top: 733px;}
+    .gurukul-graduate {right: 0; top: 931px;}
+    .exit-gurkul {left: 42px;}
+    .gurukul-income {left: 15px;}
+    .gurukul-career {right: 22px;}
+    .gurukul-job {top: 1536px;left: 0;}
+    .gurukul-family {right: 32px;}
+    .gurukul-main h2 {font-size: 28px;}
+    .audit-main h2 {padding-top: 40px;}
+    .partner-logo-box .slick-list {max-width: 200px; margin: 0 auto;}
+    .testimonial-section {padding: 35px 0;}
+    .form-popup-box {padding: 30px 20px;}
+    .form-popup-social a {width: 150px;}
+    .form-popup-social i {width: 36px;}
+    .form-popup-social span {width: 94px;}
+    .form-popup-head {padding: 0 20px;}
+    .need-help .section-row{margin: 0 auto;max-width: 294px;}
 }

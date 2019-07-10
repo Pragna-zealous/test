@@ -63,11 +63,13 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    @if(Request::is('partner_images') || Request::is('programme_images'))
     <script>
-        /*$(document).ready(function() {
+        $(document).ready(function() {
             $(".droppable").sortable();
-        });*/
+        });
     </script>
+    @endif
 
     <script src="{{ asset('js/dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>

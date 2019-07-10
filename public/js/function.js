@@ -1,11 +1,12 @@
     $(document).ready(function(){
         
-        // $(".droppable").sortable({
-        //     update: function( event, ui ) {
-        //         Dropped();
-        //     }
-        // });
-        //$( ".droppable" ).disableSelection();
+        $(".droppable").sortable({
+            update: function( event, ui ) {
+                Dropped();
+            }
+        });
+        $( ".droppable" ).disableSelection();
+
         $('.response_message').hide();
         $(".delete_page").on('click',function(e){
             e.preventDefault();
@@ -83,14 +84,13 @@
         });
 
         // Remove Partner Images
-        $(".remove").click(function(){
+        $(".partner_image.remove").click(function(){
             if(confirm('Are you sure?')){
                 $(this).parent(".pip").remove();
 
                 var url = $(this).parent().find('.url').val();
-                // var url = 'http://192.168.1.222/wecan/ajaxRequestPartner';
                 var id = $(this).parent().find('.stored_image_id').val();
-                var count = $('#total_count').val();
+                var count = $('#partner_total_count').val();
                 if( id && id != null ){
                     $.ajax({
                         type:'POST',
@@ -100,32 +100,70 @@
                         success:function(data){
 
                             count = count-1;
-                            $('#total_count').val(count);
+                            $('#partner_total_count').val(count);
                             var i=1;
                             $('.pip.draggable.item.ui-sortable-handle span').each( function(){
                                 $(this).parent().find('.stored_image_id').attr("name",'');
                                 $(this).parent().find('.stored_image_id').attr("name",'stored_image_id_'+i);
                                 i++;
                             });
-
-                            // location.reload(true);
                         }
                     });
                 }
             }
         });
 
+        // Remove Programme Images
+        $(".programme_image.remove").click(function(){
+            if(confirm('Are you sure?')){
+                $(this).parent(".pip").remove();
+
+                var url = $(this).parent().find('.url').val();
+                var id = $(this).parent().find('.stored_image_id').val();
+                var count = $('#programme_total_count').val();
+                if( id && id != null ){
+                    $.ajax({
+                        type:'POST',
+                        url:url,
+                        data:id,
+                        contentType: 'application/json; charset=utf-8',
+                        success:function(data){
+
+                            count = count-1;
+                            $('#programme_total_count').val(count);
+                            var i=1;
+                            $('.pip.draggable.item.ui-sortable-handle span').each( function(){
+                                $(this).parent().find('.stored_image_id').attr("name",'');
+                                $(this).parent().find('.stored_image_id').attr("name",'stored_image_id_'+i);
+                                i++;
+                            });
+                        }
+                    });
+                }
+            }
+        });
         // Partner Image Upload Preview
         if (window.File && window.FileList && window.FileReader) {
-            $("#files").on("change", function(e) {
+            $("#partner_files").on("change", function(e) {
                 var files = e.target.files,
                 filesLength = files.length;
-                var count = $("#total_count").val();
+                var count = $("#partner_total_count").val();
                 for (var i = 0; i < filesLength; i++) {
                     count++;
                     setupReader(files[i],count);
                 }
-                $('#total_count').val(count);
+                $('#partner_total_count').val(count);
+
+            });
+            $("#programme_files").on("change", function(e) {
+                var files = e.target.files,
+                filesLength = files.length;
+                var count = $("#programme_total_count").val();
+                for (var i = 0; i < filesLength; i++) {
+                    count++;
+                    setupReader(files[i],count);
+                }
+                $('#programme_total_count').val(count);
 
             });
         } else {
@@ -148,10 +186,10 @@
         var tmp_array = [];
         $('.add_specified_user').on('click',function(){
             var user_name = $('#tags').val();
-            var user_id = parseInt($('.tags_id').text());
+            var user_id = $('.tags_id').val();
             if($('.specified_users input').size() > 0 ){
                 $.each($("input[name='specified_users[]']"), function(){
-                    if($(this).val() != user_id && $.inArray(user_id, tmp_array) == -1){
+                    if($(this).val() != '' && $(this).val() != "NaN" && $(this).val() != user_id && $.inArray(user_id, tmp_array) == -1){
                         console.log('before if---->'+tmp_array);
                         tmp_array.push(user_id);
                         $('.specified_users').append('<input checked="checked" type="checkbox" name="specified_users[]" value="'+user_id+'">'+user_name);
@@ -161,10 +199,12 @@
                 });
             }else{
                 console.log('before else---->'+tmp_array);
-                tmp_array.push(user_id);
-                $('.specified_users').append('<input checked="checked" type="checkbox" name="specified_users[]" value="'+user_id+'">'+user_name);
-                    $('#tags').val('');
-                console.log('after else---->'+tmp_array);
+                if(user_id != '' && user_id != "NaN"){
+                    tmp_array.push(user_id);
+                    $('.specified_users').append('<input checked="checked" type="checkbox" name="specified_users[]" value="'+user_id+'">'+user_name);
+                        $('#tags').val('');
+                    console.log('after else---->'+tmp_array);
+                }
             }
         });
 
@@ -206,6 +246,7 @@ function remove_pie(elmnt) {
 function Dropped(event, ui){
     var i = 1;
     $('.droppable span.pip').each( function(){
+        // alert('foram');
         console.log($(this));
         $(this).find('.stored_image_id').attr("name",'');
         console.log('stored_image_id_'+i);
@@ -241,12 +282,8 @@ function get_specified_users_data(data)
         minLength: 1,
         source: source,
         select: function(event, ui) {
-            $('.tags_id').text(mapping[(ui.item.value)]);
+            $('.tags_id').val(mapping[(ui.item.value)]);
         }
     });
 
 }
-
-
-
-

@@ -11,7 +11,7 @@
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if(Auth::user()->user_profile)
-                        <img class="profile_image" src="public/uploads/Users/{{Auth::user()->user_profile}}">
+                        <img class="profile_image" src="<?php echo url('/public/uploads/Users').'/'.Auth::user()->user_profile;?>">
                     @else
                         <i class="fas fa-user-circle fa-fw"></i>
                     @endif

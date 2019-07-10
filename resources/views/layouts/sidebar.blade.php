@@ -14,8 +14,7 @@
     </a>
   </li>
   @php
-  $active_pages_menu = ['custompage.index','custompage.create','custompage.edit','testimonial.index','testimonial.create','testimonial.edit'];
-  
+  $active_pages_menu = ['custompage.index','custompage.create','custompage.edit','testimonial.index','testimonial.create','testimonial.edit','partner_images','programme_images'];
   @endphp
   <li class="nav-item dropdown {{(in_array(Request::route()->getName(),$active_pages_menu) ? 'show active' : '')}}">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{(in_array(Request::route()->getName(),$active_pages_menu) ? 'true' : 'false')}}">
@@ -25,7 +24,8 @@
     <div class="dropdown-menu {{(in_array(Request::route()->getName(),$active_pages_menu) ? 'show' : '')}}" aria-labelledby="pagesDropdown">
       <a class="dropdown-item {{ (Request::is('custompage') || Request::is('custompage/create') || Request::route()->getName()=='custompage.edit' ) ? 'active' : '' }}" href="{{ url('custompage') }}">CMS Pages</a>      
       <a class="dropdown-item {{ (Request::is('testimonial') || Request::is('testimonial/create') || Request::route()->getName()=='testimonial.edit' ) ? 'active' : '' }}" href="{{ url('testimonial') }}">Testimonial</a>
-      <a class="dropdown-item" href="{{ url('partner_images') }}">Partners</a>
+      <a class="dropdown-item {{ (Request::is('partner_images') ) ? 'active' : '' }}" href="{{ url('partner_images') }}">Partners</a>
+      <a class="dropdown-item {{ (Request::is('programme_images') ) ? 'active' : '' }}" href="{{ url('programme_images') }}">Programme</a>
     </div>
   </li>
    <li class="nav-item">
@@ -46,7 +46,7 @@
       <span>Mass Communication</span>
     </a>
   </li>
-  <li class="nav-item dropdown {{(in_array(Request::route()->getName(),$active_pages_menu) ? 'show active' : '')}}">
+  <?php /*?><li class="nav-item dropdown {{(in_array(Request::route()->getName(),$active_pages_menu) ? 'show active' : '')}}">
     <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{(in_array(Request::route()->getName(),$active_pages_menu) ? 'true' : 'false')}}">
       <i class="fas fa-fw fa-folder"></i>
       <span>Front Settings</span>
@@ -62,12 +62,7 @@
       <span>Social Media</span>
     </a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('subscriptions') }}">
-      <i class="fas fa-fw fa-pager"></i>
-      <span>My Subscriptions</span>
-    </a>
-  </li>
+  <?php */?>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('transaction') }}">
       <i class="fas fa-fw fa-pager"></i>
@@ -75,12 +70,6 @@
     </a>
   </li>
   @else
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('subscriptions') }}">
-      <i class="fas fa-fw fa-pager"></i>
-      <span>My Subscriptions</span>
-    </a>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="{{ route('transaction') }}">
       <i class="fas fa-fw fa-pager"></i>

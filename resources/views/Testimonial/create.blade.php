@@ -55,9 +55,6 @@
                     <div class="col-md-6">
                         {!! Form::textarea('description', null, ['class' => 'form-control ckeditor'],['id' => 'messageArea']) !!}
                     </div>
-                    @error('description')
-                        <div class="alert-danger">{{ $message }}</div>
-                    @enderror
                 </div>
                 
                 <div class="form-group row">

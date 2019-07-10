@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\CustomPage;
 use App\Models\Partner;
+use App\Models\Programme;
 use Validator;
 
 class CustompageController extends Controller
@@ -176,7 +177,6 @@ class CustompageController extends Controller
     }
 
     /**
-     * Remove the image from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -195,9 +195,7 @@ class CustompageController extends Controller
      */
     public function store_partner_images(Request $request)
     {
-        // dd($request->all());
         for ($i=1; $i <= $request['total_count']; $i++) {
-            //print_r('stored_image_id_'.$i.'---------'.$request['stored_image_id_'.$i].'<pre>');
             if(is_numeric($request->input('stored_image_id_'.$i))){
                 $partner = Partner::find($request->input('stored_image_id_'.$i));
                 if ($partner->id == $request->input('stored_image_id_'.$i)) {
@@ -218,51 +216,68 @@ class CustompageController extends Controller
                         $custompage_partner->save();
                     }
                 }
-
-                //$request['stored_image_id_'.$i]->move(public_path().'/uploads/', $name);
-
-                // $custompage_partner = new Partner();
-                // $custompage_partner->image_name = $name;
-                // $custompage_partner->image_order = $i;
-                // $custompage_partner->save();
             }
         }
-        /*if($request->hasfile('files'))
-        {
-            $i=1;
-            foreach($request->file('files') as $image)
-            {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/uploads/', $name);
-
-                $custompage_partner = new Partner();
-                $custompage_partner->image_name = $name;
-                $custompage_partner->image_order = $i;
-                $custompage_partner->save();
-                $i++;
-            }
-        }*/
         return redirect('/partner_images')->with('success', 'Images are successfully Added');
     }
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function ajaxRequestPartner()
     {
         return view('ajaxRequestPartner');
     }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    
     public function ajaxRequestPartnerPost(Request $request)
     {
         $id = $request->all();
         Partner::where('id', $id)->delete();
         return response()->json(['success'=>'Partner Image Deleted']);
+    }
+
+    public function programme_images(Request $request)
+    {
+        $images = Programme::orderBy('image_order', 'asc')->get();
+        return view('programme', compact('images'));
+    }
+
+    public function store_programme_images(Request $request)
+    {
+        // dd($request->all());
+        for ($i=1; $i <= $request['total_count']; $i++) {
+            //print_r('stored_image_id_'.$i.'---------'.$request['stored_image_id_'.$i].'<pre>');
+            if(is_numeric($request->input('stored_image_id_'.$i))){
+                $programme = Programme::find($request->input('stored_image_id_'.$i));
+                if ($programme->id == $request->input('stored_image_id_'.$i)) {
+                    $programme->image_order = $i;
+                }
+                $programme->save();
+            }else{
+                $name=$request['stored_image_id_'.$i];
+                foreach($request->file('files') as $image)
+                {
+                    if($name == $image->getClientOriginalName()){
+                        $name=$image->getClientOriginalName();
+                        $image->move(public_path().'/uploads/Programme/', $name);
+
+                        $custompage_programme = new Programme();
+                        $custompage_programme->image_name = $name;
+                        $custompage_programme->image_order = $i;
+                        $custompage_programme->save();
+                    }
+                }
+            }
+        }
+        return redirect('/programme_images')->with('success', 'Images are successfully Added');
+    }
+
+    public function ajaxRequestProgramme()
+    {
+        return view('ajaxRequestProgramme');
+    }
+    
+    public function ajaxRequestProgrammePost(Request $request)
+    {
+        $id = $request->all();
+        Programme::where('id', $id)->delete();
+        return response()->json(['success'=>'Programme Image Deleted']);
     }
 }

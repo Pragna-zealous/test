@@ -51,15 +51,26 @@
     <script>
         var SITEURL = '{{URL::to('')}}';
     </script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
 
     <script type="text/javascript" src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
+    
+    @if(Request::is('donation'))
+        <script type="text/javascript" src="{{ asset('js/highcharts.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/exporting.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/export-data.js') }}"></script>
+    @endif
+
     <script type="text/javascript" src="{{ asset('js/jquery-migrate-1.2.1.min.js') }}"></script>
-    <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
+    
     <script type="text/javascript" src="{{ asset('slick/slick.min.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('js/custom_front.js') }}"></script>
+
+    @if(Request::is('donation'))
+        <script type="text/javascript" src="js/highcharts-custom.js"></script>
+    @endif
+
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
     
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>

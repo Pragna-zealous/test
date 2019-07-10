@@ -47,7 +47,7 @@
 <header class="home-header">
     <div class="header-container">
         <div class="donation-logo">
-            <a href="index.html">
+            <a href="{{ url('/') }}">
                 <img src="images/logo-main.png" title="" alt="" />
             </a>
         </div>
@@ -65,7 +65,7 @@
                 <li><a href="{{route('profile')}}" class="{{ Request::is('profile') ? 'active' : '' }}">My Profile</a></li>
                 <li><a href="{{route('dashboard')}}" class="{{ Request::is('dashboard') ? 'active' : '' }}">Dashboard</a></li>
                 <li>
-                    <a class="btn btn-primary dropdown-item cursor" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" data-toggle="modal" data-target="#logoutModal">Sign Out</a>
+                    <a class="btn btn-primary dropdown-item pointer" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" data-toggle="modal" data-target="#logoutModal">Sign Out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
                 </li>
             @endauth
@@ -115,8 +115,11 @@
             @guest
                 <li><a href="javascript:void(0)" class="signin-popup">Signin</a></li>
             @endguest
-            <li><a href="{{ url('donation') }}" class="{{ Request::is('donation') ? 'active' : '' }}">Donate</a></li>
+            <li><a href="{{ url('donation') }}" class="donation-nav {{ Request::is('donation') ? 'active' : '' }}">Donate</a></li>
         </ul>
+        <a href="javascript:void(0)" class="menu-icon">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </a>
         <div class="clr"></div>
     </div>
 </header>

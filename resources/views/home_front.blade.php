@@ -185,32 +185,14 @@
         <div class="container">
             <h2 class="sub-titlenew">We achieved this huge impact with help from our partners</h2>
             <ul class="partner-logo-box">
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo1.png"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo2.png"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo3.png"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo4.png"></span>
-                    </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo1.png"></span>
-                    </div>
-                </li>
-                <li>
+                @foreach($partnerimages as $images)
+                    <li>
+                        <div class="logo-box-main">
+                            <span><img src="<?php echo url('/uploads/Partners').'/'.$images['image_name']; ?>"></span>
+                        </div>
+                    </li>
+                @endforeach
+                <!-- <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo2.png"></span>
                     </div>
@@ -275,6 +257,26 @@
                         <span><img src="images/logo2.png"></span>
                     </div>
                 </li>
+                <li>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo3.png"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo4.png"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo1.png"></span>
+                    </div>
+                </li>
+                <li>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo2.png"></span>
+                    </div>
+                </li> -->
             </ul>
         </div>
     </section>
@@ -283,7 +285,14 @@
         <div class="container">
             <h2 class="sub-titlenew">Our programmes are regularly covered in press</h2>
             <ul class="partner-logo-box">
-                <li>
+                @foreach($programmeimages as $images)
+                    <li>
+                        <div class="logo-box-main">
+                            <span><img src="<?php echo url('/uploads/Partners').'/'.$images['image_name']; ?>"></span>
+                        </div>
+                    </li>
+                @endforeach
+                <!-- <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo1.png"></span>
                     </div>
@@ -312,7 +321,7 @@
                     <div class="logo-box-main">
                         <span><img src="images/logo2.png"></span>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </section>
@@ -323,7 +332,7 @@
             <div class="section-row">
                 <div class="section-col4">
                     <div class="help-box">
-                        <div class="help-img">
+                        <div class="help-img" style="background-image: url('images/help-img1.png')">
 
                         </div>
                         <div class="help-text">
@@ -334,7 +343,7 @@
                 </div>
                 <div class="section-col4">
                     <div class="help-box fundraise-box">
-                        <div class="help-img">
+                        <div class="help-img" style="background-image: url('images/help-img2.png')">
 
                         </div>
                         <div class="help-text">
@@ -345,7 +354,7 @@
                 </div>
                 <div class="section-col4">
                     <div class="help-box send-love-box">
-                        <div class="help-img">
+                        <div class="help-img" style="background-image: url('images/help-img3.png')">
 
                         </div>
                         <div class="help-text">
@@ -356,7 +365,7 @@
                 </div>
                 <div class="section-col4">
                     <div class="help-box partner-box">
-                        <div class="help-img">
+                        <div class="help-img" style="background-image: url('images/help-img4.png')">
 
                         </div>
                         <div class="help-text">

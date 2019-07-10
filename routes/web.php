@@ -34,12 +34,8 @@ Route::get('about_us', 'HomeController@about_us');
 // Route::post('dopayment', 'DonationController@dopayment')->name('dopayment');
 Route::get('payment_success', 'DonationController@payment_success')->name('payment_success');
 Route::post('payment', 'DonationController@payment')->name('payment');
-Route::get('stripepayment', 'DonationController@PayWithStripe')->name('stripepayment');
 Route::get('verify_email', 'DonationController@verify_email')->name('verify_email');
 Route::get('change_currency', 'DonationController@change_currency')->name('change_currency');
-
-//cron function for subscription:
-
 
 /*--- Logged In Users Routes ----*/
 Route::group(['middleware' => 'auth'], function () {
@@ -48,7 +44,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('destroy_profile_image/{id}', 'HomeController@destroy_profile_image');
 	Route::post('/edit_profile', 'HomeController@edit_profile')->name('edit_profile');
 	Route::get('/transaction', 'HomeController@transaction')->name('transaction');
-	Route::get('/subscriptions', 'HomeController@subscriptions')->name('subscriptions');
 
 	// Razorpay payment 
 	// Route::get('pay', 'RazorpayController@pay')->name('pay');
@@ -60,10 +55,12 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth.admin'], function () {
 	Route::Resource('users','UserController');
 	Route::get('destroy_banner_image/{id}', 'CustompageController@destroy_banner_image');
+	// Partner Images Backend
 	Route::get('partner_images', 'CustompageController@partner_images');
 	Route::post('store_partner_images', 'CustompageController@store_partner_images');
 	Route::get('ajaxRequestPartner', 'CustompageController@ajaxRequestPartner');
 	Route::post('ajaxRequestPartner', 'CustompageController@ajaxRequestPartnerPost');
+
 	Route::Resource('custompage', 'CustompageController');
 	Route::get('destroy_user_image/{id}', 'TestimonialController@destroy_user_image');
 	Route::Resource('testimonial', 'TestimonialController');
@@ -82,7 +79,12 @@ Route::group(['middleware' => 'auth.admin'], function () {
 	Route::get('footersetting', 'MenuSettingsController@footersetting')->name('footersetting');
 	Route::Resource('menuheadersetting', 'MenuSettingsController');
 	Route::Resource('socialmedia','SocialMediaController');
-	
+
+	// Programme Images Backend
+	Route::get('programme_images', 'CustompageController@programme_images');
+	Route::post('store_programme_images', 'CustompageController@store_programme_images');
+	Route::get('ajaxRequestProgramme', 'CustompageController@ajaxRequestProgramme');
+	Route::post('ajaxRequestProgramme', 'CustompageController@ajaxRequestProgrammePost');
 });
 
 /*--- Member Users Routes ----*/

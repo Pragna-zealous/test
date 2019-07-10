@@ -1,6 +1,7 @@
 $(document).ready(function(){
-
   //home slider
+
+    
   $('.home-slides').slick({
     infinite: true,
     dots: true,
@@ -15,13 +16,78 @@ $(document).ready(function(){
     arrows: false,
     responsive: [
         {
-          breakpoint: 767,
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            dots: false,
+          }
+        },
+
+        {
+          breakpoint: 480,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            dots: true,
+            dots: false,
           }
         },
+    ]
+  });
+
+  $('.partner-logo-box').slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,    
+    dots: false,
+    arrows: false,
+    autoplaySpeed: 2000,
+    responsive: [
+        
+        {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 1,
+              dots: false,
+            }
+          },
+          {
+            breakpoint: 479,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: false,
+            }
+          },
+    ]
+  });
+
+  $('.we-can-setting .section-row').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,    
+    dots: false,
+    arrows: false,
+    autoplaySpeed: 2000,
+    responsive: [
+        
+        {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              dots: false,
+            }
+          },
+          {
+            breakpoint: 479,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              dots: false,
+            }
+          },
     ]
   });
 
@@ -29,9 +95,16 @@ $(document).ready(function(){
     $("#form-popup-bg").fadeIn();
     $("#form-popup-main").fadeIn();
   });
-  $("#form-popup-head i").on('click', function() {
-    $("#form-popup-bg").fadeOut();
-    $("#form-popup-main").fadeOut();
+  
+  $(".mail-msg").on('click', function() {
+    $(".form-popup-bg").fadeIn();
+    $("#emailPopup").fadeIn();
+  });
+
+  $(".form-popup-head i").on('click', function() {
+    $(".form-popup-bg").fadeOut();
+    $("#LoginPopup").fadeOut();
+    $("#emailPopup").fadeOut();
   });
 
   $(".password-change-btn .defult-btn").on('click', function() {
@@ -39,6 +112,9 @@ $(document).ready(function(){
     $(".password-change").show();
   });
 
+  $(".menu-icon").on('click', function() {
+    $(".nav-menu").slideToggle();
+  });
 
   function readURL(input) {
       if (input.files && input.files[0]) {
@@ -56,67 +132,13 @@ $(document).ready(function(){
     readURL(this);
   });
 
-  $(".people-icon").on('click', function() {
-    $(this).toggleClass('active');
-  });
+  //$(".people-icon").on('click', function() {
+   // $(this).toggleClass('active');
+  //});
 
   $(".share-btn span").on('click', function() {
     $(this).toggleClass('active');
     $(".share-icon").fadeToggle('');
     
   });
-
-
-// Build the chart
-Highcharts.chart('container', {
-    chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
-    },
-    title: {
-        text: 'Browser market shares in January, 2018'
-    },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
-    plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-                enabled: false
-            },
-            showInLegend: true
-        }
-    },
-    series: [{
-        name: 'Brands',
-        colorByPoint: true,
-        data: [{
-            name: 'Chrome',
-            y: 61.41,
-            sliced: true,
-            selected: true
-        }, {
-            name: 'Internet Explorer',
-            y: 11.84
-        }, {
-            name: 'Firefox',
-            y: 10.85
-        }, {
-            name: 'Edge',
-            y: 4.67
-        }, {
-            name: 'Safari',
-            y: 4.18
-        }, {
-            name: 'Other',
-            y: 7.05
-        }]
-    }]
-});
-  
-
 });

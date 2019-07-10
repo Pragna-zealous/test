@@ -42,7 +42,9 @@ class MasscommunicationController extends Controller
                                 ->where('whatsapp_notification',1)
                                 ->get()
                                 ->toArray();
-        }else if($request['radio'] == 'specified_user'){
+            return $this->masscommunication_send_email($description,$emails,$phone_number);
+            //return $this->masscommunication_send_whatsapp($description,$phone_number);
+        }else if($request['radio'] == 'specified_user' && $request['specified_users'] != ''){
             $description = $request['description'];
             $emails = User::select('email')
                             ->whereIn('id',$request['specified_users'])
@@ -54,12 +56,14 @@ class MasscommunicationController extends Controller
                                 ->where('whatsapp_notification',1)
                                 ->get()
                                 ->toArray();
+            return $this->masscommunication_send_email($description,$emails,$phone_number);
+            //return $this->masscommunication_send_whatsapp($description,$phone_number);
         }
-        return $this->masscommunication_send_email($description,$emails);
-        return $this->masscommunication_send_whatsapp($description,$phone_number);
+        $all_users = User::select('id')->where('user_type','member')->get()->count();
+        return view('Mass Communication/mass_communication',compact('all_users'));
     }
 
-    public function masscommunication_send_email($description,$emails)
+    public function masscommunication_send_email($description,$emails,$phone_number)
     {
         $adminemail = User::select('email')->where('user_type','admin')->latest()->first();
         
@@ -71,16 +75,7 @@ class MasscommunicationController extends Controller
         Mail::to($data['to'])
         ->bcc($data['bcc'])
         ->send(new Masscommunication($data));
-
-        // Mail::send([],[],function($message)use ($data){
-        //     $message->to($data['to'])
-        //     ->from('admin@zealousys.com')
-        //     ->bcc(['foram.zealousys@gmail.com','test.wecan1@gmail.com'])
-        //     ->subject('Announcement')
-        //     ->setBody($data['description'], 'text/html')
-        //     ;
-        // });
-        return;
+        return $this->masscommunication_send_whatsapp($description,$phone_number);
     }
 
     public function masscommunication_send_whatsapp($description,$phone_number)
@@ -91,10 +86,12 @@ class MasscommunicationController extends Controller
                 'body' => html_entity_decode(strip_tags($description)),
             ];
             $json = json_encode($data); // Encode data to JSON
-            $token = 'iydlpki6b92wrx3e';
+            // $token = 'iydlpki6b92wrx3e';
+            $token = env('WHATSAPP_TOKEN');
             // URL for request POST /message
 
-            $url = 'https://eu36.chat-api.com/instance51378/message?token='.$token;
+            // $url = 'https://eu36.chat-api.com/instance51378/message?token='.$token;
+            $url = env('WHATSAPP_API_MESSAGE').$token;
 
             // Make a POST request
             $options = stream_context_create(['http' => [
@@ -104,7 +101,7 @@ class MasscommunicationController extends Controller
                 ]
             ]);
             // Send a request
-            $result = file_get_contents($url, false, $options);            
+            $result = file_get_contents($url, false, $options);
         }
         return;
     }

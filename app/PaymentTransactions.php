@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentTransactions extends Model
 {
-	protected $fillable = ['user_id', 'type', 'amount', 'fee', 'tax', 'currency', 'method', 'status', 'email', 'contact', 'description','payment_id','order_id','payment_type'];
+	protected $fillable = ['user_id', 'type', 'amount', 'fee', 'tax', 'currency', 'method', 'status', 'email', 'contact', 'description','payment_id','order_id'];
 
     public function user()
 	{

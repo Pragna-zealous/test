@@ -10,24 +10,20 @@
             $payment_type = 'stripe';
             $currency = 'USD';
             $currencyicon = '$';
-            $customer_id = (Auth::user() ? Auth::user()->stripe_customer_id : '' );
         }else{
             $payment_type = 'razorpay';
             $currency = 'INR';
             $currencyicon = '₹';
-            $customer_id = (Auth::user() ? Auth::user()->razorpay_customer_id : '' );
         }
     }else{
         if($res->country_code=='IN' || empty($res->country_code)){
             $payment_type = 'razorpay';
             $currency = 'INR';
             $currencyicon = '₹';
-            $customer_id = (Auth::user() ? Auth::user()->razorpay_customer_id : '' );
         } else { 
             $payment_type = 'stripe';
             $currency = 'USD';
             $currencyicon = '$';
-            $customer_id = (Auth::user() ? Auth::user()->stripe_customer_id : '' );
         } 
     }
     ?>
@@ -37,7 +33,6 @@
                 <div class="banner-form">
                     {!! Form::open(array('url' => '/dopayment', 'class' => "form-horizontal razorpay_form")) !!}
                         <input type="hidden" id="loggedin_user" value="{{(Auth::user() ? Auth::user()->id : '')}}">
-                        <input type="hidden" id="customer_id" value="{{$customer_id}}">
                         <input type="hidden" id="payment_type" value="{{ $payment_type }}" />
                         <input type="hidden" id="currency" value="{{ $currency }}" />
                         @if(Session::has('flash_pay_error'))
@@ -48,7 +43,7 @@
                         </div>
                         <div class="donation-tab">
                             <div class="donation-tab-top">
-                                <input type="hidden" id="subscription_type" value="once">
+                                <input type="hidden" id="subscription_type">
                                 <a class="active give_donation cursor" give="once">Give Once</a>
                                 <a class="give_donation cursor" give="monthly">Give Monthly</a>
                             </div>
@@ -71,17 +66,6 @@
                         </div>
                         <button type="button" class="donation-btn" id="donation-btn"><i class="fa fa-heart" aria-hidden="true"></i>Donate</button>
                         <button style="display: none;" type="button" id="make_payment"><i class="fa fa-heart" aria-hidden="true"></i>Donate</button>
-                       <!--  <input 
-                            id="get_profile_submit"
-                            type="submit" 
-                            value="stripe"
-                            data-key="pk_test_5B5loe91O0AsFmXh6zgniWwF000QFzbmuk"
-                            data-amount="1000"
-                            data-currency="USD"
-                            data-name="WeCan"
-                            data-description="Stripe payment for donation"
-                            class="get-started"
-                        /> -->
                     </form>
                     <div class="signup_form" style="display: none;">
                                 <div class="form-group row">
@@ -415,91 +399,81 @@
                     <div class="logo-box-main">
                         <span><img src="images/logo1.png"></span>
                     </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo3.png"></span>
+                    </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo1.png"></span>
+                    </div>
+
+
+
                 </li>
                 <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo2.png"></span>
                     </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo4.png"></span>
+                    </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo2.png"></span>
+                    </div>
+
+
                 </li>
                 <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo3.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo4.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo1.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo2.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo3.png"></span>
                     </div>
+
+
                 </li>
                 <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo4.png"></span>
                     </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo2.png"></span>
+                    </div>
+                    <div class="logo-box-main">
+                        <span><img src="images/logo4.png"></span>
+                    </div>
+
+
                 </li>
                 <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo1.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo2.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo3.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo4.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo1.png"></span>
                     </div>
+
+
+
                 </li>
                 <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo2.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo3.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo4.png"></span>
                     </div>
-                </li>
-                <li>
-                    <div class="logo-box-main">
-                        <span><img src="images/logo1.png"></span>
-                    </div>
-                </li>
-                <li>
                     <div class="logo-box-main">
                         <span><img src="images/logo2.png"></span>
                     </div>
+
+
                 </li>
             </ul>
         </div>
@@ -519,8 +493,24 @@
     <section class="graph-section">
         <div class="container">
             <h2 class="sub-titlenew">Check how are your donation is used?</h2>
-            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-            
+            <div class="graph-left">
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+            <div class="graph-right">
+                <div class="graph-info">
+                    <span>84%</span>
+                    <p>Program Service</p>
+                </div>
+                <div class="graph-info">
+                    <span>11%</span>
+                    <p>Program Management</p>
+                </div>
+                <div class="graph-info">
+                    <span>5%</span>
+                    <p>Fundraising Activities</p>
+                </div>
+            </div>
+
         </div>
     </section>
     <!-- need love section -->

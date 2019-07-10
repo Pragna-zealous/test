@@ -1,0 +1,60 @@
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<div id="container" style="max-width:500px;height: 400px"></div>
+<button id="btnMonth">Month</button>
+<button id="btnYear">Year</button>
+<button id="btnTotal">Total</button>
+<script type="text/javascript">
+    
+    var chart = Highcharts.chart('container', {
+            chart: {
+            type: 'column'
+        },
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'Month'
+        },
+        xAxis: {
+            categories: ['Active', 'Inactive']
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: 'Units'
+            }
+        },
+        series: [{
+            showInLegend: false,
+            name: 'Month',
+            data: [['Active',89], ['Inactive',71]]
+        }]
+    });
+
+    $('#btnYear').on('click',function () {
+        chart.series[0].setData([['Active',127], ['Inactive',144]]);
+        chart.series[0].setName('Year');
+        chart.setTitle({text: "Year"});
+    });
+
+    $('#btnMonth').on('click',function () {
+        chart.series[0].setData([['Active',89], ['Inactive',71]]);
+        chart.series[0].setName('Month');
+        chart.setTitle({text: "Month"});
+    });
+
+    $('#btnTotal').on('click',function () {
+        chart.series[0].setData([['Active',150], ['Inactive',76]]);
+        chart.series[0].setName('Total');
+        chart.setTitle({text: "Total"});
+    });
+
+</script>

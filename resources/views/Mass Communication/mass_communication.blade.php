@@ -22,7 +22,7 @@
 
             <div class="card-body">
                     <?php $user = auth()->user(); ?>
-                {!! Form::open(array('url' => '/masscommunication_send', 'class' => "form-horizontal settings_form",'files' => true)) !!}
+                {!! Form::open(array('url' => '/masscommunication_send', 'class' => "form-horizontal settings_form mass_communication",'files' => true)) !!}
 
                 <div class="form-group row">
                     {!! Form::label('description', 'Description*', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
@@ -36,26 +36,25 @@
                 
                 <div class="form-group row">
                     {!! Form::label('all_users', 'All User', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-                    <div class="col-md-6">
+                    <div class="">
                         {!! Form::radio('radio', 'all_users', false, ['class' => 'radio-box-users']) !!}
                     </div>
-                    {!! Form::label('specified_user', 'Specified User', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
-                    <div class="col-md-6">
-                        {!! Form::radio('radio', 'specified_user', false, ['class' => 'radio-box-users']) !!}
+                    <div class="all_user display-none">
+                        <p>{{$all_users}} Records Found</p>
                     </div>
                 </div>
-
-                <div class="all_user display-none">
-                    <p>{{$all_users}} Records Found</p>
-                </div>
-                
-                <div class="specified_user display-none">
-                    <input class="form-control" id="tags" type="text">
-                    <input type="hidden" class="tags_id">
-                    <button type="button" class="add_specified_user" data-selected="">+Add</button>
-                </div>
-
-                <div class="specified_users">
+                <div class="form-group row">
+                    {!! Form::label('specified_user', 'Specified User', ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+                    <div class="">
+                        {!! Form::radio('radio', 'specified_user', false, ['class' => 'radio-box-users']) !!}
+                    </div>
+                    <div class="specified_user display-none">
+                        <input class="form-control" id="tags" type="text">
+                        <input type="hidden" class="tags_id" value="">
+                        <button type="button" class="add_specified_user" data-selected="">+Add</button>
+                    </div>
+                    <div class="specified_users offset-md-4">
+                    </div>
                 </div>
                 
                 <div class="form-group row mb-0">
