@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    .nav-menu li {margin-right: 25px;}
+    .indians-section h2 {font-size: 30px;}
+    .indians-section span {width: 126px;line-height: 44px;}
+    .sub-titlenew {font-size: 36px;}
+    .choose-section-box a {font-size: 18px;}
+    .choose-section-sub {height: 350px;}
+    .we-can-box-text {padding: 20px;}
+    .we-can-sub {height: 280px;}
+    .happy-people h2 {height: 36px;}
+    .section-col4 {width: 50%;}
+}

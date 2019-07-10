@@ -1,0 +1,97 @@
+.header_btn{
+    float: right;
+    margin: 0;
+}
+.destroy_form{
+    display: inline-block;
+}
+.pointer{
+    cursor: pointer;
+}
+.center{
+    text-align: center;
+}
+#dataTable {
+    position:relative;
+  }
+  #table-scroll {
+    height:46%;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #dataTable table {
+    width:100%;
+  
+  }
+  #dataTable table * {
+    background:yellow;
+    color:black;
+  }
+  #dataTable table thead th .text {
+    position:absolute;   
+    top:-20px;
+    z-index:2;
+    height:20px;
+    width:35%;
+    border:1px solid red;
+  }
+  #content .message .alert-success{ width:100%; float:left; display: inline-block; padding:10px; margin:10px; text-align:center; background: #25b440; border:1px solid #25b440; color:#fff; }
+  #content .message button , #content .message button span{ display:none; }
+
+  #content .message .alert-danger{ width:100%; float:left; display: inline-block; padding:10px; /*margin:10px;*/ text-align:center; background: #fd5e5e; border:1px solid #fd5e5e; color:#fff; }
+  #content .message button , #content .message button span{ display:none; }
+
+  .pass-fields.error input[type="password"]{ border: 1px solid #fd5e5e; }
+  .profile_image {width: 20px; height: 20px; border-radius: 10px;}
+  .homepage {     min-height: 385px; }
+  .homepage h1{   width: 40%;
+      margin: 0 auto;
+      padding-top: 18%;
+      /*color: #1eb4f7;*/
+       }
+  .alert-danger {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+  }
+  .alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  }
+  .alert-dismissible {
+  padding-right: 4rem;
+  }
+  .alert button {
+    display: none;
+  }
+  .form-field-box .fa-eye { cursor: pointer;  position: absolute;right: 20px;top: 15px;color: #03affb;font-size: 22px;}
+
+  /* Partner Image Upload Preview */
+
+  input[type="file"] {
+    display: block;
+  }
+  .imageThumb {
+    max-height: 75px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+  }
+  .pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+  }
+  .remove {
+    display: block;
+    background: #444;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+  }
+  .remove:hover {
+    background: white;
+    color: black;
+  }
+  .display-none{display: none;}
