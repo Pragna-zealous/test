@@ -61,7 +61,7 @@
                                 <div class="card-body-icon">
                                     <i class="fas fa-fw fa-comments"></i>
                                 </div>
-                                <div class="mr-5">Comments</div>
+                                <div class="mr-5">Messages</div>
                             </div>
                             <a class="card-footer text-white clearfix small z-1" href="#">
                             <span class="float-left">View Details</span>

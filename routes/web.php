@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth.admin'], function () {
 	Route::Resource('users','UserController');
 	Route::get('destroy_banner_image/{id}', 'CustompageController@destroy_banner_image');
 	// Partner Images Backend
-	Route::get('partner_images', 'CustompageController@partner_images');
+	Route::get('partner_images', 'CustompageController@partner_images')->name('partner_images');
 	Route::post('store_partner_images', 'CustompageController@store_partner_images');
 	Route::get('ajaxRequestPartner', 'CustompageController@ajaxRequestPartner');
 	Route::post('ajaxRequestPartner', 'CustompageController@ajaxRequestPartnerPost');
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth.admin'], function () {
 	Route::Resource('socialmedia','SocialMediaController');
 
 	// Programme Images Backend
-	Route::get('programme_images', 'CustompageController@programme_images');
+	Route::get('programme_images', 'CustompageController@programme_images')->name('programme_images');
 	Route::post('store_programme_images', 'CustompageController@store_programme_images');
 	Route::get('ajaxRequestProgramme', 'CustompageController@ajaxRequestProgramme');
 	Route::post('ajaxRequestProgramme', 'CustompageController@ajaxRequestProgrammePost');
