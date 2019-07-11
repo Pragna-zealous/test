@@ -177,6 +177,7 @@
     <!-- gurukul program -->
     <section class="gurukul-main">
         <h2>Gurukul Program</h2>
+        <div class="clr"></div>
         <div class="gurukul-program-section">
             <div class="full-width">
                 <!-- poort box -->
@@ -278,27 +279,28 @@
                     <div class="g-icon">
                         <img src="images/career-icon.png">
                     </div>
-                    <div class="gurukul-text">career guidance</div>
+                    <div class="gurukul-text">Career guidance</div>
                 </div>
 
                 <!-- gurukul job -->
                 <div class="gurukul-job driving-img-main">
                     <div class="gurukul-img-box">
-                        <img src="images/graduate-img.png">
+                        <img src="images/job-img.png">
                     </div>
                     <div class="gurukul-text">Job Growth</div>
                 </div>
 
                 <!-- gurukul family -->
                 <div class="gurukul-family icon-box">
-                        <div class="g-icon">
-                            <img src="images/happy-family.png">
-                        </div>
-                        <div class="gurukul-text">Happy Family</div>
+                    <div class="g-icon">
+                        <img src="images/happy-family.png">
                     </div>
+                    <div class="gurukul-text">Happy Family</div>
+                </div>
 
             </div>
         </div>
+        <div class="clr"></div>
     </section>
     <!-- gurukul program end-->
     <!-- Progress bar-->
@@ -307,19 +309,19 @@
             <div class="section-row">
                 <div class="section-col3">
                     <div class="circle-main full-width">
-                        <div class="circle-box">8</div>
+                        <div class="circle-box"><span class="counter-number1">8</span></div>
                         <label>Livelihoods</label>
                     </div>
                 </div>
                 <div class="section-col3">
                     <div class="circle-main full-width">
-                        <div class="circle-box">100%</div>
+                        <div class="circle-box"><span class="counter-number2">100</span>%</div>
                         <label>Placement</label>
                     </div>
                 </div>
                 <div class="section-col3">
                     <div class="circle-main full-width">
-                        <div class="circle-box">5000</div>
+                        <div class="circle-box"><span class="counter-number3">5000</span></div>
                         <label>Student graduated</label>
                     </div>
                 </div>

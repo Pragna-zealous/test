@@ -3,7 +3,6 @@
 
 @section('content')
 
-  
 <style>
     .draggable img{
         width: 100px;
@@ -40,6 +39,26 @@
     }
  
 </style>
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+    </li>
+    <li class="breadcrumb-item active">Pages</li>
+</ol>
+
+<h5><span>Pages: </span>
+<a href="{{ url('custompage') }}" class="{{ (Request::is('custompage') || Request::is('custompage/create') || Request::route()->getName()=='custompage.edit' ) ? 'active' : '' }}">CMS Pages</a> <span class="divider">|</span>
+<a href="{{ url('testimonial') }}" class="{{ (Request::is('testimonial') || Request::is('testimonial/create') || Request::route()->getName()=='testimonial.edit' ) ? 'active' : '' }}">Testimonial</a> <span class="divider">|</span>
+<a href="{{ url('partner_images') }}" class="{{ (Request::is('partner_images') || Request::route()->getName()=='partner_images' ) ? 'active' : '' }}">Partners</a> <span class="divider">|</span>
+<a href="{{ url('programme_images') }}" class="{{ (Request::is('testimonial') || Request::is('testimonial/create') || Request::route()->getName()=='testimonial.edit' ) ? 'active' : '' }}">Programme</a>
+</h5>
+
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
 
 <div class="row justify-content-center">
     <div class="col-md-12">
