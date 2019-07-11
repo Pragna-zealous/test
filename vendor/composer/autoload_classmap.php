@@ -46,6 +46,7 @@ return array(
     'App\\Models\\FrontSettings' => $baseDir . '/app/Models/FrontSettings.php',
     'App\\Models\\MenuSetting' => $baseDir . '/app/Models/MenuSetting.php',
     'App\\Models\\Partner' => $baseDir . '/app/Models/Partner.php',
+    'App\\Models\\Programme' => $baseDir . '/app/Models/Programme.php',
     'App\\Models\\Socialmedia' => $baseDir . '/app/Models/Socialmedia.php',
     'App\\Models\\Subscriptions' => $baseDir . '/app/Models/Subscriptions.php',
     'App\\Models\\Testimonial' => $baseDir . '/app/Models/Testimonial.php',
